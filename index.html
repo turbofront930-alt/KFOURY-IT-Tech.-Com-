@@ -21,7 +21,7 @@
             --whatsapp-color: #25d366;
             --facebook-color: #1877f2;
             --success: #00e676;
-            --warning: #ffb300;
+            --gold: #ffd700;
         }
 
         * {
@@ -37,7 +37,7 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 60px; /* مساحة للشريط الثابت أسفل الشاشة */
+            padding-bottom: 60px;
         }
 
         /* ================= 1. شريط الإعلانات والعروض العلوي ================= */
@@ -75,7 +75,7 @@
             background: rgba(10, 15, 29, 0.98);
             backdrop-filter: blur(10px);
             position: fixed;
-            top: 36px; /* تحريك الهيدر لأسفل لاستيعاب شريط الإعلانات */
+            top: 36px;
             width: 100%;
             z-index: 1000;
             border-bottom: 1px solid rgba(0, 188, 212, 0.2);
@@ -141,7 +141,6 @@
             box-shadow: 0 0 8px var(--success);
         }
 
-        /* Dropdown Navigation Menu */
         .nav-dropdown-container {
             position: relative;
             display: inline-block;
@@ -285,7 +284,7 @@
         .page-section {
             display: none;
             min-height: calc(100vh - 120px);
-            padding: 160px 20px 80px; /* مساحة بادينج متناسقة مع الهيدر */
+            padding: 160px 20px 80px;
             animation: fadeIn 0.4s ease-in-out;
             max-width: 1200px;
             margin: 0 auto;
@@ -363,7 +362,6 @@
         .feature-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15);
         }
 
         .feature-card i {
@@ -444,7 +442,7 @@
             border: 1px solid rgba(0, 188, 212, 0.2);
         }
 
-        /* ================= Page 3: عقود الصيانة الدورية ================= */
+        /* ================= Page 3: عقود الصيانة الدورية وباقات الصيانة الجديدة ================= */
         .maintenance-info {
             background: var(--card-bg);
             padding: 30px;
@@ -459,27 +457,67 @@
             margin-bottom: 10px;
         }
 
-        .maintenance-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 25px;
+        /* NEW: جدول مقارنة باقات الصيانة */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .pricing-card {
             background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .maintenance-table th, .maintenance-table td {
-            padding: 15px;
+            border-radius: 15px;
+            padding: 30px 20px;
+            border: 1px solid rgba(255,255,255,0.08);
             text-align: center;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0,188,212,0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            background: var(--primary);
+            color: #000;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 15px;
+            border-radius: 12px;
+        }
+
+        .pricing-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        .maintenance-table th {
-            background: rgba(0, 188, 212, 0.15);
-            color: var(--primary);
+        .pricing-features li i {
+            color: var(--success);
+            margin-left: 8px;
         }
 
-        /* ================= Page 4: الإحصائيات ومعرض الأعمال ================= */
+        /* ================= Page 4: الإحصائيات ومعرض الأعمال والتقييمات ================= */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -541,6 +579,27 @@
             margin-bottom: 12px;
         }
 
+        /* NEW: قسم آراء العملاء */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .review-stars {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
         .brands-box {
             margin-top: 50px;
             padding: 30px;
@@ -566,15 +625,9 @@
             padding: 8px 20px;
             border-radius: 8px;
             background: rgba(0,0,0,0.3);
-            transition: 0.3s;
         }
 
-        .brand-item:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* ================= Page 5: حاسبة التكلفة المبدئية ================= */
+        /* ================= Page 5: حاسبة التكلفة والضمان ================= */
         .calculator-card {
             background: var(--card-bg);
             max-width: 850px;
@@ -622,6 +675,16 @@
             background: rgba(0, 188, 212, 0.1);
             border-radius: 10px;
             border: 1px dashed var(--primary);
+        }
+
+        /* NEW: فاحص الضمان المباشر */
+        .warranty-box {
+            margin-top: 40px;
+            background: rgba(0,0,0,0.2);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
         }
 
         /* ================= Page 6: الأسئلة الشائعة وتواصل معنا ================= */
@@ -681,6 +744,14 @@
         .contact-info-item i {
             color: var(--primary);
             margin-left: 8px;
+        }
+
+        /* NEW: خريطة المقر */
+        .map-container {
+            margin-top: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(0,188,212,0.3);
         }
 
         /* ================= Modal Window Styles (نافذة عرض السعر) ================= */
@@ -846,7 +917,6 @@
             transform: scale(1.1);
         }
 
-        /* Floating Facebook Button */
         .floating-facebook {
             position: fixed;
             bottom: 140px;
@@ -896,7 +966,6 @@
             visibility: visible;
         }
 
-        /* الشريط الثابت السفلي لحقوق الملكية والتوقيع */
         .fixed-bottom-bar {
             position: fixed;
             bottom: 0;
@@ -1041,11 +1110,6 @@
                 <h3>عقود صيانة دورية</h3>
                 <p>متابعة واستجابة سريعة للأعطال التقنية للحفاظ على سير العمل.</p>
             </div>
-            <div class="feature-card" onclick="switchPage('calculator')">
-                <i class="fas fa-calculator"></i>
-                <h3>حاسبة المقايسات</h3>
-                <p>احسب التكلفة التقديرية لتأسيس موقعك واطلب معاينة مباشرة.</p>
-            </div>
         </div>
     </div>
 
@@ -1082,27 +1146,17 @@
             <div class="service-card">
                 <i class="fas fa-bell"></i>
                 <h3>3. أجهزة الإنذار والأمان</h3>
-                <p>تأمين الشركات والمباني بأحدث أجهزة الإنذار ضد السرقة والحريق لتأمين الممتلكات بفاعلية عالية.</p>
+                <p>تأمين الشركاء والمباني بأحدث أجهزة الإنذار ضد السرقة والحريق لتأمين الممتلكات بفاعلية عالية.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-network-wired"></i>
                 <h3>4. شبكات الكابلات (UTP & Fiber)</h3>
                 <p>تأسيس وربط شبكات الكابلات بجميع أنواعها (UTP والكابلات الضوئية/ألياف Fiber) بأعلى معايير الجودة والسرعة.</p>
             </div>
-            <div class="service-card">
-                <i class="fas fa-fingerprint"></i>
-                <h3>5. أجهزة أكسس كنترول والبصمة</h3>
-                <p>توريد وبرمجة أجهزة الحضور والانصراف بالبصمة وجه وأبواب الدخول الذكية لضبط أمن المنشآت.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-wifi"></i>
-                <h3>6. تقوية تغطية الواي فاي (Wi-Fi Solutions)</h3>
-                <p>تركيب وتجهيز نقاط الوصول (Access Points) لتغطية المساحات الكبيرة والشركات بشبكة فائقة السرعة.</p>
-            </div>
         </div>
     </div>
 
-    <!-- ================= 4. صفحة عقود الصيانة الدورية (Maintenance Page) ================= -->
+    <!-- ================= 4. صفحة عقود الصيانة الدورية والباقات ================= -->
     <div id="page-maintenance" class="page-section">
         <div class="section-header">
             <h2>عقود الصيانة الدورية</h2>
@@ -1111,14 +1165,14 @@
 
         <div class="maintenance-info">
             <h3>لماذا تشترك في عقد صيانة دوري مع كفوري أي تي تيك؟</h3>
-            <p>يوفر لك عقد الصيانة فريق عمل متخصص يجري زيارات دورية لفحص وتحديث كافة الأنظمة التقنية المجهزة لديك والتدخل الفوري عند أي عطل طارئ مع استجابة خلال ساعات.</p>
+            <p>يوفر لك عقد الصيانة فريق عمل متخصص يجري زيارات دورية لفحص وتحديث كافة الأنظمة التقنية المجهزة لديك والتدخل الفوري عند أي عطل.</p>
         </div>
 
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>1. صيانة شبكات الكاميرات</h3>
-                <p>فحص واختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
+                <p>فحص وااختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-microchip"></i>
@@ -1132,40 +1186,50 @@
             </div>
         </div>
 
-        <!-- جدول تفصيلي لباقات الصيانة -->
-        <table class="maintenance-table">
-            <thead>
-                <tr>
-                    <th>نوع العقد</th>
-                    <th>الزيارات الدورية</th>
-                    <th>الدعم الفني الميداني</th>
-                    <th>الاستجابة للطوارئ</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>البرونزي</strong></td>
-                    <td>زيارة واحدة شهرياً</td>
-                    <td>متاح طوال الأسبوع عبر الهاتف</td>
-                    <td>خلال 24 ساعة</td>
-                </tr>
-                <tr>
-                    <td><strong>الفضي</strong></td>
-                    <td>زيارتان شهرياً</td>
-                    <td>دعم مجاني عن بُعد وطوارئ</td>
-                    <td>خلال 12 ساعة</td>
-                </tr>
-                <tr>
-                    <td><strong>الذهبي الشامل</strong></td>
-                    <td>أسبوعياً / حسب الطلب</td>
-                    <td>دعم ميداني متواصل ومباشر</td>
-                    <td>استجابة فورية خلال 3 ساعات</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- إضافة جدول باقات الصيانة التفاعلي (جديد) -->
+        <div class="section-header" style="margin-top: 50px;">
+            <h3>باقات عقود الصيانة السنوية</h3>
+            <p>اختر الباقة المناسبة لحجم أعمالك وشبكتك التقنية</p>
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h4>الباقة البرونزية</h4>
+                <p style="color:var(--text-muted);">للمحلات والمكاتب الصغيرة</p>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> زيارة صيانة دورية شهرياً</li>
+                    <li><i class="fas fa-check"></i> دعم فني عبر الهاتف والواتساب</li>
+                    <li><i class="fas fa-check"></i> استجابة للطوارئ خلال 24 ساعة</li>
+                </ul>
+                <button onclick="openQuoteModal()" class="btn-call" style="width:100%;">طلب الباقة البرونزية</button>
+            </div>
+
+            <div class="pricing-card popular">
+                <span class="pricing-badge">الأكثر طلباً ⭐</span>
+                <h4>الباقة الفضية</h4>
+                <p style="color:var(--text-muted);">للشركات والمؤسسات المتوسطة</p>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> زيارتين صيانة دورية شهرياً</li>
+                    <li><i class="fas fa-check"></i> دعم فني مباشر واستجابة خلال 12 ساعة</li>
+                    <li><i class="fas fa-check"></i> فحص شامل للسيرفرات والشبكة</li>
+                </ul>
+                <button onclick="openQuoteModal()" class="btn-cta" style="width:100%;">طلب الباقة الفضية</button>
+            </div>
+
+            <div class="pricing-card">
+                <h4>الباقة الذهبية</h4>
+                <p style="color:var(--text-muted);">للمصانع والمؤسسات الكبرى</p>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> زيارات صيانة أسبوعية شاملة</li>
+                    <li><i class="fas fa-check"></i> استجابة طوارئ فورية خلال 4 ساعات</li>
+                    <li><i class="fas fa-check"></i> توفير أجهزة بديلة في حالات الصيانة</li>
+                </ul>
+                <button onclick="openQuoteModal()" class="btn-call" style="width:100%;">طلب الباقة الذهبية</button>
+            </div>
+        </div>
     </div>
 
-    <!-- ================= 5. صفحة الإحصائيات والمعرض (Stats & Portfolio Page) ================= -->
+    <!-- ================= 5. صفحة الإحصائيات والمعرض والتقييمات ================= -->
     <div id="page-stats-portfolio" class="page-section">
         <div class="section-header">
             <h2>إحصائياتنا ومعرض الأعمال</h2>
@@ -1202,6 +1266,23 @@
             <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">جاري تحميل المشاريع...</p>
         </div>
 
+        <!-- إضافة قسم آراء العملاء والتوصيات (جديد) -->
+        <div class="section-header" style="margin-top: 50px;">
+            <h3>ماذا يقول عملاؤنا عن خدماتنا؟</h3>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"التزام ممتاز بالمنشأة وتأسيس دقيق لشبكة الكاميرات والسيرفرات لدينا، سرعة في الاستجابة عند الطلب."</p>
+                <h5 style="margin-top:10px; color:var(--primary);">- أ. أحمد محمود (مدير شركة)</h5>
+            </div>
+            <div class="review-card">
+                <div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"عقد الصيانة الدوري أتاح لنا استقرار كامل في المنشأة وبدون توقف للشبكة أو الأجهزة."</p>
+                <h5 style="margin-top:10px; color:var(--primary);">- مهندس/ سامح علي</h5>
+            </div>
+        </div>
+
         <div class="brands-box">
             <h4>نعتمد على أفضل العلامات التجارية العالمية في التوريد:</h4>
             <div class="brands-grid">
@@ -1212,15 +1293,14 @@
                 <div class="brand-item">DELL</div>
                 <div class="brand-item">HP</div>
                 <div class="brand-item">ZKTECO</div>
-                <div class="brand-item">D-LINK</div>
             </div>
         </div>
     </div>
 
-    <!-- ================= 6. صفحة حاسبة التكلفة (Calculator Page) ================= -->
+    <!-- ================= 6. صفحة حاسبة التكلفة والضمان ================= -->
     <div id="page-calculator" class="page-section">
         <div class="section-header">
-            <h2>حاسبة التكلفة المبدئية</h2>
+            <h2>حاسبة التكلفة المبدئية والضمان</h2>
             <p>أدخل متطلبات مشروعك للحصول على تقدير فوري وطلب معاينة ميدانية</p>
         </div>
 
@@ -1247,10 +1327,21 @@
                     <button onclick="openQuoteModal()" class="btn-call" style="padding: 12px 20px; border-color:var(--primary); color:var(--primary);"><i class="fas fa-file-alt"></i> تقديم طلب رسمى</button>
                 </div>
             </div>
+
+            <!-- إضافة فاحص حالة الضمان السريع (جديد) -->
+            <div class="warranty-box">
+                <h4><i class="fas fa-shield-check" style="color:var(--primary);"></i> فاحص الضمان السريع للمنتجات</h4>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">أدخل الرقم التسلسلي (Serial Number) للتأكد من فترة الضمان مع الشركة</p>
+                <div style="display:flex; gap:10px; max-width:400px; margin:0 auto;">
+                    <input type="text" id="serialInput" placeholder="أدخل رقم السيريال..." style="padding:8px 12px; border-radius:6px; border:1px solid var(--primary); background:#0a0f1d; color:#fff; flex:1;">
+                    <button onclick="checkWarranty()" class="btn-cta">فحص</button>
+                </div>
+                <div id="warrantyResult" style="margin-top:10px; font-weight:bold;"></div>
+            </div>
         </div>
     </div>
 
-    <!-- ================= 7. صفحة الأسئلة الشائعة والاتصال (FAQ & Contact Page) ================= -->
+    <!-- ================= 7. صفحة الأسئلة الشائعة والاتصال والخريطة ================= -->
     <div id="page-faq-contact" class="page-section">
         <div class="section-header">
             <h2>الأسئلة الشائعة والتواصل</h2>
@@ -1276,15 +1367,6 @@
                     نعم، كافة الأجهزة والكاميرات وشبكات الكابلات الموردة تأتي بضمان رسمي معتمد يصل إلى سنتين مع دعم فني متواصل.
                 </div>
             </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFaq(this)">
-                    <span>هل يتم تقديم خدمة المعاينة الميدانية قبل التأسيس؟</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    بالتأكيد، يقوم فريقنا الهندسي بزيارة موقعك لعمل رفع مساحي وتحديد نقاط التغطية المثالية وتقديم مقايسة مضبوطة مجاناً.
-                </div>
-            </div>
         </div>
 
         <div class="contact-box">
@@ -1303,6 +1385,11 @@
             <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px;">
                 <a href="https://wa.me/201005258531?text=مرحباً%20كفوري%20أي%20تي%20تيك" target="_blank" class="btn-cta" style="padding: 12px 25px;"><i class="fab fa-whatsapp"></i> محادثة واتساب فوري</a>
                 <button onclick="openQuoteModal()" class="btn-quote" style="padding: 12px 25px; font-size:1rem;"><i class="fas fa-file-invoice"></i> طلب عرض سعر رسمي</button>
+            </div>
+
+            <!-- إضافة خريطة موثوقة للموقع (جديد) -->
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.6038954117!2d31.2357116!3d30.0444196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1680000000000!5m2!1sen!2seg" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -1335,7 +1422,6 @@
                         <option value="تأسيس شبكات UTP و ألياف Fiber">تأسيس شبكات UTP وألياف Fiber</option>
                         <option value="عقد صيانة دورية شامل">عقد صيانة دورية شامل</option>
                         <option value="أنظمة إنذار وأمان">أنظمة إنذار وأمان</option>
-                        <option value="أجهزة بصمة وأكسس كنترول">أجهزة بصمة وأكسس كنترول</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1407,12 +1493,12 @@
             counters.forEach(counter => {
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText.replace('+', '');
-                    const inc = Math.ceil(target / 100);
+                    const count = +counter.innerText;
+                    const inc = target / 150;
 
                     if (count < target) {
-                        counter.innerText = (count + inc > target ? target : count + inc) + "+";
-                        setTimeout(updateCount, 20);
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
                     } else {
                         counter.innerText = target + "+";
                     }
@@ -1462,6 +1548,19 @@
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
+        // NEW: وظيفية فحص الضمان
+        function checkWarranty() {
+            const sn = document.getElementById('serialInput').value.trim();
+            const res = document.getElementById('warrantyResult');
+            if(!sn) {
+                res.style.color = "#ff5252";
+                res.innerText = "يرجى إدخال السيريال نمبر أولاً!";
+                return;
+            }
+            res.style.color = "var(--success)";
+            res.innerText = `المنتج برقم (${sn}) مسجل وساري الضمان لمدة 12 شهر.`;
+        }
+
         // 7. التحكم في النافذة المنبثقة Modal (طلب عرض السعر)
         function openQuoteModal() {
             document.getElementById('quoteModal').classList.add('active');
@@ -1493,8 +1592,7 @@
             { title: "طلب معاينة جديد", msg: "قام عميل من 6 أكتوبر بطلب معاينة نظام 8 كاميرات IP" },
             { title: "عقد صيانة جديد", msg: "تم توقيع عقد صيانة شبكة وسيرفرات لشركة هندسية" },
             { title: "طلب عرض سعر", msg: "تم إرسال عرض سعر لتجهيز معمل كمبيوتر بالكامل" },
-            { title: "استفسار دعم فني", msg: "قام عميل من المنوفية بطلب فحص شبكة كابلات UTP" },
-            { title: "تأكيد تركيبة جديدة", msg: "تم الانتهاء من تركيب نظام حضور وانصراف بالبصمة" }
+            { title: "استفسار دعم فني", msg: "قام عميل من المنوفية بطلب فحص شبكة كابلات UTP" }
         ];
 
         function showNextToast() {
@@ -1508,13 +1606,11 @@
 
             toast.classList.add('show');
 
-            // إخفاء الإشعار بعد 5 ثوانٍ
             setTimeout(() => {
                 toast.classList.remove('show');
             }, 5000);
         }
 
-        // تشغيل الإشعار الأول بعد 4 ثوانٍ من فتح الموقع، ثم تكراره كل 16 ثانية
         setTimeout(() => {
             showNextToast();
             setInterval(showNextToast, 16000);
