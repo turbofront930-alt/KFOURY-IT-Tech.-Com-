@@ -1794,7 +1794,7 @@
             const alarms = document.getElementById('alarms').value;
             const phone = "201005258531";
 
-            const message = `مرحباً كفوري أي تي تيك،%0Aأرغب في معاينة وتجهيز موقعي بحسب التقدير التالي:%0A- الكاميرات: ${cams}%0A- الكمبيوتر/الشبكات: ${pcs}%0A- أنظمة أمان/إنذار: ${alarms}`;
+            const message = `مرحباً كفوري أي تي تيك،%0Aأرغب في معاينة وتجهيز موقعي بحسب التتقدير التالي:%0A- الكاميرات: ${cams}%0A- الكمبيوتر/الشبكات: ${pcs}%0A- أنظمة أمان/إنذار: ${alarms}`;
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
@@ -1987,20 +1987,28 @@
         onSnapshot(collection(db, "projects"), (snapshot) => {
             if (snapshot.empty) {
                 projectsContainer.innerHTML = `
-                    <div class="portfolio-item"><i class="fas fa-server"></i><h4>تأسيس غرفة خوادم (Server Room)</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-border-all"></i><h4>تركيب أنظمة كاميرات لمصنع ومؤسسة</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-network-wired"></i><h4>تمديد شبكات UTP للشركات</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-shield-virus"></i><h4>تأمين مقر وأجهزة إنذار متطورة</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-shopping-basket"></i><h4>ماركت خير بلدنا</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-store"></i><h4>ماركت البرعي</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-laptop-code"></i><h4>شركه حلول التقنيه</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-couch"></i><h4>مصنع اولاد العم للاثاث</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-building"></i><h4>شركه العربي للمقاولات</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-hamburger"></i><h4>شركه أفاق فاست فوود</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-tree"></i><h4>شركه وود ماستر للاخشاب</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-cut"></i><h4>محل ابو علي للحلاقه</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-cut"></i><h4>محل الديزل للحلاقه</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-cut"></i><h4>محل زيكا للحلاقه</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-shopping-cart"></i><h4>ماركت الحمد</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-home"></i><h4>فيلا لواء / محمد علواني</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-home"></i><h4>فيلا نقيب / على الكردي</h4></div>
                 `;
                 return;
             }
             projectsContainer.innerHTML = snapshot.docs.map(doc => {
                 const proj = doc.data();
                 return `
-                    <div class="portfolio-item" style="background-image: linear-gradient(rgba(10,15,29,0.85), rgba(10,15,29,0.85)), url('${proj.image || ''}'); background-size: cover; background-position: center;">
-                        <i class="fas fa-project-diagram"></i>
-                        <h4>${proj.title}</h4>
-                        <p style="font-size:0.85rem; color: var(--text-muted); margin-top: 5px;">${proj.description || ''}</p>
+                    <div class="portfolio-item">
+                        <i class="${proj.icon || 'fas fa-check-circle'}"></i>
+                        <h4>${proj.title || proj.name || 'مشروع مكتمل'}</h4>
                     </div>
                 `;
             }).join('');
