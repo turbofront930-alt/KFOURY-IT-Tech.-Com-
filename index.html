@@ -22,6 +22,19 @@
             --facebook-color: #1877f2;
             --success: #00e676;
             --gold: #ffd700;
+            --input-bg: #0a0f1d;
+            --border-color: rgba(0, 188, 212, 0.3);
+        }
+
+        /* Light Theme Variables */
+        body.light-mode {
+            --bg-dark: #f0f4f8;
+            --card-bg: #ffffff;
+            --primary: #008ba3;
+            --text-light: #1a202c;
+            --text-muted: #4a5568;
+            --input-bg: #edf2f7;
+            --border-color: rgba(0, 139, 163, 0.3);
         }
 
         * {
@@ -38,6 +51,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             padding-bottom: 60px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         /* ================= 1. شريط الإعلانات والعروض العلوي ================= */
@@ -78,8 +92,13 @@
             top: 36px;
             width: 100%;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+            border-bottom: 1px solid var(--border-color);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: background 0.3s;
+        }
+
+        body.light-mode header {
+            background: rgba(255, 255, 255, 0.98);
         }
 
         .navbar {
@@ -105,7 +124,7 @@
             width: 48px;
             object-fit: contain;
             border-radius: 8px;
-            border: 1px solid rgba(0, 188, 212, 0.4);
+            border: 1px solid var(--border-color);
         }
 
         .logo-text h1 {
@@ -141,6 +160,25 @@
             box-shadow: 0 0 8px var(--success);
         }
 
+        .theme-toggle-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--primary);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.3s;
+        }
+
+        .theme-toggle-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
         .nav-dropdown-container {
             position: relative;
             display: inline-block;
@@ -149,7 +187,7 @@
         .dropdown-btn {
             background: var(--card-bg);
             color: var(--primary);
-            border: 1px solid rgba(0, 188, 212, 0.4);
+            border: 1px solid var(--border-color);
             padding: 9px 18px;
             font-size: 0.95rem;
             font-weight: 700;
@@ -171,11 +209,11 @@
             position: absolute;
             top: 120%;
             right: 0;
-            background: #0f1628;
+            background: var(--card-bg);
             min-width: 260px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
             border-radius: 12px;
-            border: 1px solid rgba(0, 188, 212, 0.3);
+            border: 1px solid var(--border-color);
             overflow: hidden;
             opacity: 0;
             visibility: hidden;
@@ -306,7 +344,7 @@
             border-radius: 20px;
             position: relative;
             background: linear-gradient(rgba(10, 15, 29, 0.85), rgba(10, 15, 29, 0.92)), url('team-bg.jpg') center/cover no-repeat;
-            border: 1px solid rgba(0, 188, 212, 0.25);
+            border: 1px solid var(--border-color);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
@@ -353,7 +391,7 @@
             background: var(--card-bg);
             padding: 30px 20px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             text-align: center;
             transition: 0.3s;
             cursor: pointer;
@@ -396,7 +434,7 @@
             background: var(--card-bg);
             padding: 30px 20px;
             border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
             transition: 0.3s;
             display: flex;
             flex-direction: column;
@@ -439,10 +477,10 @@
             object-fit: cover;
             border-radius: 8px;
             margin-bottom: 15px;
-            border: 1px solid rgba(0, 188, 212, 0.2);
+            border: 1px solid var(--border-color);
         }
 
-        /* ================= Page 3: عقود الصيانة الدورية وباقات الصيانة الجديدة ================= */
+        /* ================= Page 3: عقود الصيانة الدورية وباقات الصيانة ================= */
         .maintenance-info {
             background: var(--card-bg);
             padding: 30px;
@@ -457,7 +495,6 @@
             margin-bottom: 10px;
         }
 
-        /* NEW: جدول مقارنة باقات الصيانة */
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -469,7 +506,7 @@
             background: var(--card-bg);
             border-radius: 15px;
             padding: 30px 20px;
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid var(--border-color);
             text-align: center;
             position: relative;
             transition: 0.3s;
@@ -496,7 +533,6 @@
         .pricing-card h4 {
             font-size: 1.4rem;
             margin-bottom: 10px;
-            color: #fff;
         }
 
         .pricing-features {
@@ -507,7 +543,7 @@
 
         .pricing-features li {
             padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.9rem;
             color: var(--text-muted);
         }
@@ -530,7 +566,7 @@
             padding: 30px 20px;
             border-radius: 12px;
             text-align: center;
-            border: 1px solid rgba(0, 188, 212, 0.15);
+            border: 1px solid var(--border-color);
         }
 
         .stat-card i {
@@ -543,7 +579,6 @@
             font-size: 2.5rem;
             font-weight: 800;
             display: block;
-            color: #fff;
         }
 
         .portfolio-grid {
@@ -560,7 +595,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
             transition: 0.3s;
             cursor: pointer;
             text-align: center;
@@ -579,7 +614,6 @@
             margin-bottom: 12px;
         }
 
-        /* NEW: قسم آراء العملاء */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -591,7 +625,7 @@
             background: var(--card-bg);
             padding: 25px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
         }
 
         .review-stars {
@@ -600,41 +634,52 @@
             font-size: 0.9rem;
         }
 
+        /* 5. Infinite Logo Slider (شريط الماركات والمشاريع المتحرك السلس) */
         .brands-box {
             margin-top: 50px;
-            padding: 30px;
+            padding: 30px 0;
             background: rgba(255,255,255,0.02);
             border-radius: 12px;
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
 
-        .brands-grid {
+        .slider-track {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            gap: 30px;
+            width: calc(250px * 14);
+            animation: scrollSlider 25s linear infinite;
+        }
+
+        @keyframes scrollSlider {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 7)); }
         }
 
         .brand-item {
+            min-width: 200px;
             font-weight: 800;
             font-size: 1.1rem;
-            color: #fff;
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 8px 20px;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
+            padding: 12px 25px;
             border-radius: 8px;
-            background: rgba(0,0,0,0.3);
+            background: var(--card-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
-        /* ================= Page 5: حاسبة التكلفة والضمان ================= */
+        /* ================= Page 5: حاسبة التكلفة والضمان والحاسبة المتقدمة ================= */
         .calculator-card {
             background: var(--card-bg);
             max-width: 850px;
-            margin: 0 auto;
+            margin: 0 auto 40px;
             padding: 40px;
             border-radius: 15px;
-            border: 1px solid rgba(0, 188, 212, 0.3);
+            border: 1px solid var(--border-color);
         }
 
         .calc-grid {
@@ -645,7 +690,7 @@
         }
 
         .calc-input-group {
-            background: rgba(0,0,0,0.3);
+            background: var(--input-bg);
             padding: 20px;
             border-radius: 10px;
             text-align: center;
@@ -657,15 +702,15 @@
             font-weight: bold;
         }
 
-        .calc-input-group input {
+        .calc-input-group input, .calc-input-group select {
             width: 100%;
             padding: 10px;
             text-align: center;
             border-radius: 8px;
             border: 1px solid var(--primary);
-            background: #0a0f1d;
-            color: #fff;
-            font-size: 1.2rem;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-size: 1rem;
         }
 
         .calc-result-box {
@@ -677,17 +722,50 @@
             border: 1px dashed var(--primary);
         }
 
-        /* NEW: فاحص الضمان المباشر */
         .warranty-box {
             margin-top: 40px;
-            background: rgba(0,0,0,0.2);
+            background: var(--input-bg);
             padding: 25px;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
             text-align: center;
         }
 
-        /* ================= Page 6: الأسئلة الشائعة وتواصل معنا ================= */
+        /* 1. Interactive Camera Cost Calculator & 2. Currency Converter */
+        .adv-calc-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid var(--primary);
+            padding: 30px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .currency-toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .currency-btn {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            padding: 6px 14px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .currency-btn.active {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* ================= Page 6: الأسئلة الشائعة والمعاينة المجانية وتواصل معنا ================= */
         .faq-container {
             max-width: 800px;
             margin: 0 auto 50px;
@@ -697,7 +775,7 @@
             background: var(--card-bg);
             margin-bottom: 15px;
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--border-color);
             overflow: hidden;
         }
 
@@ -715,15 +793,25 @@
             color: var(--text-muted);
             display: none;
             font-size: 0.95rem;
-            border-top: 1px solid rgba(255,255,255,0.03);
+            border-top: 1px solid var(--border-color);
             padding-top: 12px;
+        }
+
+        /* 4. Free Inspection Request Form Section */
+        .inspection-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid var(--primary);
+            max-width: 800px;
+            margin: 0 auto 50px;
         }
 
         .contact-box {
             background: var(--card-bg);
             padding: 40px;
             border-radius: 15px;
-            border: 1px solid rgba(0, 188, 212, 0.2);
+            border: 1px solid var(--border-color);
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
@@ -746,15 +834,14 @@
             margin-left: 8px;
         }
 
-        /* NEW: خريطة المقر */
         .map-container {
             margin-top: 30px;
             border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(0,188,212,0.3);
+            border: 1px solid var(--border-color);
         }
 
-        /* ================= Modal Window Styles (نافذة عرض السعر) ================= */
+        /* ================= Modals (النوافذ المنبثقة) ================= */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -800,7 +887,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 12px;
         }
 
@@ -838,9 +925,9 @@
             width: 100%;
             padding: 12px;
             border-radius: 8px;
-            border: 1px solid rgba(0, 188, 212, 0.3);
-            background: #0a0f1d;
-            color: #fff;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-light);
             font-size: 0.95rem;
             outline: none;
         }
@@ -850,7 +937,7 @@
             box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
         }
 
-        /* ================= 2. نظام الإشعارات المنبثقة التلقائي (Notification Toast) ================= */
+        /* ================= 2. نظام الإشعارات المنبثقة التلقائي ================= */
         .toast-notification {
             position: fixed;
             bottom: 80px;
@@ -883,7 +970,7 @@
         }
 
         .toast-text h5 {
-            color: #fff;
+            color: var(--text-light);
             font-size: 0.85rem;
             margin-bottom: 2px;
         }
@@ -940,6 +1027,29 @@
             transform: scale(1.1);
         }
 
+        .floating-qr-btn {
+            position: fixed;
+            bottom: 205px;
+            right: 25px;
+            background-color: var(--primary);
+            color: #000;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+            z-index: 1500;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .floating-qr-btn:hover {
+            transform: scale(1.1);
+        }
+
         .back-to-top {
             position: fixed;
             bottom: 145px;
@@ -976,7 +1086,7 @@
             text-align: center;
             padding: 12px 15px;
             font-size: 0.85rem;
-            border-top: 1px solid rgba(0, 188, 212, 0.3);
+            border-top: 1px solid var(--border-color);
             z-index: 2000;
             display: flex;
             justify-content: space-between;
@@ -1003,6 +1113,7 @@
             .toast-notification { left: 10px; right: 10px; max-width: none; bottom: 75px; }
             .floating-facebook { bottom: 135px; right: 20px; width: 50px; height: 50px; font-size: 22px; }
             .floating-whatsapp { bottom: 75px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
+            .floating-qr-btn { bottom: 195px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
         }
     </style>
 </head>
@@ -1014,8 +1125,13 @@
         <span>خصم خاص 10% على عقود الصيانة السنوية وتركيب كاميرات IP لفترة محدودة!</span>
     </div>
 
+    <!-- 6. زر QR Code العائم للمشاركة السريعة -->
+    <div class="floating-qr-btn" onclick="openQrModal()" title="شارك الكارت الرقمي QR Code">
+        <i class="fas fa-qrcode"></i>
+    </div>
+
     <!-- زر الفيس بوك العائم -->
-    <a href="https://www.facebook.com/ahmed.kamal.498728" class="floating-facebook" target="_blank" title="تابعنا على فيسبوك">
+    <a href="https://www.facebook.com/profile.php?id=61594847902125" class="floating-facebook" target="_blank" title="تابعنا على فيسبوك">
         <i class="fab fa-facebook-f"></i>
     </a>
 
@@ -1053,6 +1169,11 @@
                 <span class="status-dot"></span>
                 <span>الدعم الفني متاح الآن</span>
             </div>
+
+            <!-- 3. Dark / Light Mode Toggle Button -->
+            <button class="theme-toggle-btn" onclick="toggleTheme()" id="themeBtn">
+                <i class="fas fa-moon"></i> <span id="themeBtnText">الوضع الليلي</span>
+            </button>
 
             <!-- القائمة المنسدلة للتنقل بين الأقسام والصفحات -->
             <div class="nav-dropdown-container">
@@ -1186,7 +1307,6 @@
             </div>
         </div>
 
-        <!-- إضافة جدول باقات الصيانة التفاعلي (جديد) -->
         <div class="section-header" style="margin-top: 50px;">
             <h3>باقات عقود الصيانة السنوية</h3>
             <p>اختر الباقة المناسبة لحجم أعمالك وشبكتك التقنية</p>
@@ -1229,7 +1349,7 @@
         </div>
     </div>
 
-    <!-- ================= 5. صفحة الإحصائيات والمعرض والتقييمات ================= -->
+    <!-- ================= 5. صفحة الإحصائيات ومعرض الأعمال والتقييمات ================= -->
     <div id="page-stats-portfolio" class="page-section">
         <div class="section-header">
             <h2>إحصائياتنا ومعرض الأعمال</h2>
@@ -1266,7 +1386,6 @@
             <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">جاري تحميل المشاريع...</p>
         </div>
 
-        <!-- إضافة قسم آراء العملاء والتوصيات (جديد) -->
         <div class="section-header" style="margin-top: 50px;">
             <h3>ماذا يقول عملاؤنا عن خدماتنا؟</h3>
         </div>
@@ -1283,27 +1402,38 @@
             </div>
         </div>
 
+        <!-- 5. Infinite Logo Slider (شريط الماركات والمشاريع المتحرك السلس) -->
         <div class="brands-box">
-            <h4>نعتمد على أفضل العلامات التجارية العالمية في التوريد:</h4>
-            <div class="brands-grid">
-                <div class="brand-item">HIKVISION</div>
-                <div class="brand-item">DAHUA</div>
-                <div class="brand-item">CISCO</div>
-                <div class="brand-item">TP-LINK</div>
-                <div class="brand-item">DELL</div>
-                <div class="brand-item">HP</div>
-                <div class="brand-item">ZKTECO</div>
+            <h4 style="margin-bottom: 20px;">نعتمد على أفضل العلامات التجارية العالمية في التوريد:</h4>
+            <div class="slider-track">
+                <div class="brand-item"><i class="fas fa-video"></i> HIKVISION</div>
+                <div class="brand-item"><i class="fas fa-camera"></i> DAHUA</div>
+                <div class="brand-item"><i class="fas fa-network-wired"></i> CISCO</div>
+                <div class="brand-item"><i class="fas fa-wifi"></i> TP-LINK</div>
+                <div class="brand-item"><i class="fas fa-desktop"></i> DELL</div>
+                <div class="brand-item"><i class="fas fa-laptop"></i> HP</div>
+                <div class="brand-item"><i class="fas fa-fingerprint"></i> ZKTECO</div>
+
+                <!-- تكرار العناصر لضمان الحركة اللا نهائية -->
+                <div class="brand-item"><i class="fas fa-video"></i> HIKVISION</div>
+                <div class="brand-item"><i class="fas fa-camera"></i> DAHUA</div>
+                <div class="brand-item"><i class="fas fa-network-wired"></i> CISCO</div>
+                <div class="brand-item"><i class="fas fa-wifi"></i> TP-LINK</div>
+                <div class="brand-item"><i class="fas fa-desktop"></i> DELL</div>
+                <div class="brand-item"><i class="fas fa-laptop"></i> HP</div>
+                <div class="brand-item"><i class="fas fa-fingerprint"></i> ZKTECO</div>
             </div>
         </div>
     </div>
 
-    <!-- ================= 6. صفحة حاسبة التكلفة والضمان ================= -->
+    <!-- ================= 6. صفحة حاسبة التكلفة والضمان والحاسبة المتقدمة ================= -->
     <div id="page-calculator" class="page-section">
         <div class="section-header">
             <h2>حاسبة التكلفة المبدئية والضمان</h2>
             <p>أدخل متطلبات مشروعك للحصول على تقدير فوري وطلب معاينة ميدانية</p>
         </div>
 
+        <!-- الحاسبة التقديرية العامة السابقة -->
         <div class="calculator-card">
             <div class="calc-grid">
                 <div class="calc-input-group">
@@ -1328,20 +1458,70 @@
                 </div>
             </div>
 
-            <!-- إضافة فاحص حالة الضمان السريع (جديد) -->
+            <!-- فاحص حالة الضمان السريع -->
             <div class="warranty-box">
                 <h4><i class="fas fa-shield-check" style="color:var(--primary);"></i> فاحص الضمان السريع للمنتجات</h4>
                 <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">أدخل الرقم التسلسلي (Serial Number) للتأكد من فترة الضمان مع الشركة</p>
                 <div style="display:flex; gap:10px; max-width:400px; margin:0 auto;">
-                    <input type="text" id="serialInput" placeholder="أدخل رقم السيريال..." style="padding:8px 12px; border-radius:6px; border:1px solid var(--primary); background:#0a0f1d; color:#fff; flex:1;">
+                    <input type="text" id="serialInput" placeholder="أدخل رقم السيريال..." style="padding:8px 12px; border-radius:6px; border:1px solid var(--primary); background:var(--bg-dark); color:var(--text-light); flex:1;">
                     <button onclick="checkWarranty()" class="btn-cta">فحص</button>
                 </div>
                 <div id="warrantyResult" style="margin-top:10px; font-weight:bold;"></div>
             </div>
         </div>
+
+        <!-- 1. Interactive Camera Cost Calculator & 2. Currency Converter -->
+        <div class="adv-calc-container">
+            <div class="currency-toggle-container">
+                <span style="font-size:0.9rem; font-weight:bold;">اختر العملة:</span>
+                <button class="currency-btn active" id="btnEgp" onclick="setCurrency('EGP')">EGP (جنيه)</button>
+                <button class="currency-btn" id="btnUsd" onclick="setCurrency('USD')">USD ($)</button>
+            </div>
+
+            <h3 style="color:var(--primary); text-align:center; margin-bottom:20px;"><i class="fas fa-calculator"></i> حاسبة التكلفة التفصيلية لكاميرات المراقبة</h3>
+            
+            <div class="calc-grid">
+                <div class="calc-input-group">
+                    <label>نوع الكاميرات:</label>
+                    <select id="advCamType" onchange="calculateAdvCameraCost()">
+                        <option value="analog">أنالوج (HD Analog)</option>
+                        <option value="ip">شبكات ذكية (IP Cameras)</option>
+                    </select>
+                </div>
+
+                <div class="calc-input-group">
+                    <label>دقة التصوير:</label>
+                    <select id="advCamRes" onchange="calculateAdvCameraCost()">
+                        <option value="2mp">2 ميجابكسل (Full HD)</option>
+                        <option value="5mp">5 ميجابكسل (Super HD)</option>
+                        <option value="8mp">8 ميجابكسل (4K Ultra HD)</option>
+                    </select>
+                </div>
+
+                <div class="calc-input-group">
+                    <label>عدد الكاميرات:</label>
+                    <input type="number" id="advCamCount" value="4" min="1" oninput="calculateAdvCameraCost()">
+                </div>
+
+                <div class="calc-input-group">
+                    <label>سعة التسجيل (Hard Disk):</label>
+                    <select id="advHdd" onchange="calculateAdvCameraCost()">
+                        <option value="1tb">1 Terabyte (تخزين أسبوعين)</option>
+                        <option value="2tb">2 Terabyte (تخزين شهر)</option>
+                        <option value="4tb">4 Terabyte (تخزين شهرين)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="calc-result-box" style="margin-top:25px;">
+                <h3 id="advCalcResultText" style="color:var(--primary);">التكلفة التقديرية الكلية: 0 EGP</h3>
+                <p style="font-size:0.85rem; color:var(--text-muted); margin-top:5px;">شاملة الكاميرات، جهاز التسجيل DVR/NVR، الهارد، والتركيب المبدئي</p>
+                <button onclick="sendAdvEstimateWhatsApp()" class="btn-cta" style="margin-top:15px; padding:10px 20px;"><i class="fab fa-whatsapp"></i> حجز معاينة بهذه التفاصيل</button>
+            </div>
+        </div>
     </div>
 
-    <!-- ================= 7. صفحة الأسئلة الشائعة والاتصال والخريطة ================= -->
+    <!-- ================= 7. صفحة الأسئلة الشائعة والمعاينة المجانية والاتصال الخريطة ================= -->
     <div id="page-faq-contact" class="page-section">
         <div class="section-header">
             <h2>الأسئلة الشائعة والتواصل</h2>
@@ -1369,6 +1549,43 @@
             </div>
         </div>
 
+        <!-- 4. Free Inspection Request Form Section -->
+        <div class="inspection-card">
+            <h3 style="color:var(--primary); text-align:center; margin-bottom:10px;"><i class="fas fa-clipboard-check"></i> طلب معاينة ميدانية مجانية للموقع</h3>
+            <p style="text-align:center; color:var(--text-muted); margin-bottom:25px; font-size:0.9rem;">قم بتعبئة النموذج وسيقوم مهندس المعاينة بالتواصل معك لتأكيد الموعد</p>
+            
+            <form class="modal-form" onsubmit="submitInspectionForm(event)">
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px;">
+                    <div class="form-group">
+                        <label>الاسم بالكامل:</label>
+                        <input type="text" id="inspName" placeholder="أدخل اسمك" required>
+                    </div>
+                    <div class="form-group">
+                        <label>رقم الهاتف / الواتساب:</label>
+                        <input type="tel" id="inspPhone" placeholder="010XXXXXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label>نوع المنشأة:</label>
+                        <select id="inspType" required>
+                            <option value="شركة / مكتب">شركة / مكتب</option>
+                            <option value="مصنع / مخزن">مصنع / مخزن</option>
+                            <option value="منزل / فيلا">منزل / فيلا</option>
+                            <option value="محل تجاري / مطعم">محل تجاري / مطعم</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>التاريخ المناسب للمعاينة:</label>
+                        <input type="date" id="inspDate" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>عنوان الموقع / المنطقة التفصيلية:</label>
+                    <textarea id="inspAddress" rows="2" placeholder="أدخل اسم المحافظة والمدينة والتفاصيل..." required></textarea>
+                </div>
+                <button type="submit" class="btn-cta" style="width:100%; padding:12px; font-size:1rem;"><i class="fas fa-calendar-check"></i> تأكيد موعد المعاينة المجانية</button>
+            </form>
+        </div>
+
         <div class="contact-box">
             <h3>تواصل مباشر مع كفوري أي تي تيك</h3>
             <div class="contact-info-list">
@@ -1379,7 +1596,7 @@
                     <i class="fab fa-whatsapp"></i> واتساب: <a href="https://wa.me/201005258531" style="color:var(--primary); text-decoration:none;">+20 10 05258531</a>
                 </div>
                 <div class="contact-info-item">
-                    <i class="fab fa-facebook"></i> فيسبوك: <a href="https://www.facebook.com/ahmed.kamal.498728" target="_blank" style="color:var(--primary); text-decoration:none;">صفحتنا الرسمية</a>
+                    <i class="fab fa-facebook"></i> فيسبوك: <a href="https://www.facebook.com/profile.php?id=61594847902125" target="_blank" style="color:var(--primary); text-decoration:none;">صفحتنا الرسمية</a>
                 </div>
             </div>
             <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px;">
@@ -1387,14 +1604,14 @@
                 <button onclick="openQuoteModal()" class="btn-quote" style="padding: 12px 25px; font-size:1rem;"><i class="fas fa-file-invoice"></i> طلب عرض سعر رسمي</button>
             </div>
 
-            <!-- إضافة خريطة موثوقة للموقع (جديد) -->
+            <!-- خريطة الموقع -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.6038954117!2d31.2357116!3d30.0444196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1680000000000!5m2!1sen!2seg" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
 
-    <!-- ================= Modal Window: طلب عرض سعر رسمي ================= -->
+    <!-- ================= Modal Window 1: طلب عرض سعر رسمي ================= -->
     <div class="modal-overlay" id="quoteModal">
         <div class="modal-content">
             <div class="modal-header">
@@ -1430,6 +1647,22 @@
                 </div>
                 <button type="submit" class="btn-cta" style="width: 100%; padding: 12px; font-size: 1rem;"><i class="fas fa-paper-plane"></i> إرسال الطلب الآن</button>
             </form>
+        </div>
+    </div>
+
+    <!-- 6. Modal Window 2: QR Code Sharing Popup -->
+    <div class="modal-overlay" id="qrModal">
+        <div class="modal-content" style="text-align: center;">
+            <div class="modal-header">
+                <h3><i class="fas fa-qrcode"></i> الكارت الرقمي QR Code</h3>
+                <button class="close-modal" onclick="closeQrModal()">&times;</button>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:15px;">امسح الكود بكاميرا الهاتف للوصول السريع لبيانات التواصل والصفحة الرسمية</p>
+            <div style="background:#fff; padding:15px; display:inline-block; border-radius:12px;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.facebook.com/profile.php?id=61594847902125" alt="QR Code" style="width:180px; height:180px; display:block;">
+            </div>
+            <h4 style="margin-top:15px; color:var(--primary);">كفوري أي تي تيك | KFOURY IT TECH</h4>
+            <p style="font-size:0.8rem; color:var(--text-muted);">هاتف / واتساب: +20 10 05258531</p>
         </div>
     </div>
 
@@ -1483,9 +1716,26 @@
             if (pageId === 'stats-portfolio') {
                 startCounters();
             }
+            if (pageId === 'calculator') {
+                calculateAdvCameraCost();
+            }
         }
 
-        // 3. كود العدادات التفاعلية
+        // 3. Dark / Light Mode Toggle System
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const btnText = document.getElementById('themeBtnText');
+            const btnIcon = document.querySelector('#themeBtn i');
+            if (document.body.classList.contains('light-mode')) {
+                btnText.innerText = "الوضع النهاري";
+                btnIcon.className = "fas fa-sun";
+            } else {
+                btnText.innerText = "الوضع الليلي";
+                btnIcon.className = "fas fa-moon";
+            }
+        }
+
+        // 4. كود العدادات التفاعلية
         let animated = false;
         function startCounters() {
             if (animated) return;
@@ -1508,7 +1758,7 @@
             animated = true;
         }
 
-        // 4. زر العودة للأعلى
+        // 5. زر العودة للأعلى
         window.addEventListener('scroll', () => {
             const backToTopBtn = document.getElementById('backToTop');
             if (window.scrollY > 300) {
@@ -1522,14 +1772,14 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 5. الأسئلة الشائعة FAQ Toggle
+        // 6. الأسئلة الشائعة FAQ Toggle
         function toggleFaq(element) {
             const answer = element.nextElementSibling;
             const isVisible = answer.style.display === 'block';
             answer.style.display = isVisible ? 'none' : 'block';
         }
 
-        // 6. حاسبة التكلفة والتحويل للواتساب
+        // 7. حاسبة التكلفة العادية
         function calculateCost() {
             const cams = parseInt(document.getElementById('cams').value) || 0;
             const pcs = parseInt(document.getElementById('pcs').value) || 0;
@@ -1548,7 +1798,59 @@
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
-        // NEW: وظيفية فحص الضمان
+        // 1 & 2. Interactive Camera Cost Calculator & Currency Converter Logic
+        let currentCurrency = 'EGP';
+        const usdExchangeRate = 48; // سعر تحويل افتراضي للدولار
+
+        function setCurrency(curr) {
+            currentCurrency = curr;
+            document.getElementById('btnEgp').classList.toggle('active', curr === 'EGP');
+            document.getElementById('btnUsd').classList.toggle('active', curr === 'USD');
+            calculateAdvCameraCost();
+        }
+
+        function calculateAdvCameraCost() {
+            const type = document.getElementById('advCamType').value;
+            const res = document.getElementById('advCamRes').value;
+            const count = parseInt(document.getElementById('advCamCount').value) || 1;
+            const hdd = document.getElementById('advHdd').value;
+
+            let pricePerCam = type === 'ip' ? 1200 : 650;
+            if (res === '5mp') pricePerCam += 300;
+            if (res === '8mp') pricePerCam += 750;
+
+            let hddPrice = 2200;
+            if (hdd === '2tb') hddPrice = 3400;
+            if (hdd === '4tb') hddPrice = 5800;
+
+            let baseDvrNvrPrice = type === 'ip' ? 3500 : 2000;
+            let installationEstimate = count * 250;
+
+            let totalEgp = (pricePerCam * count) + hddPrice + baseDvrNvrPrice + installationEstimate;
+
+            let finalPriceText = "";
+            if (currentCurrency === 'EGP') {
+                finalPriceText = `التكلفة التقديرية الكلية: ${totalEgp.toLocaleString()} جنيه مصري (EGP)`;
+            } else {
+                let totalUsd = Math.round(totalEgp / usdExchangeRate);
+                finalPriceText = `التكلفة التقديرية الكلية: $${totalUsd.toLocaleString()} دولار أمريكي (USD)`;
+            }
+
+            document.getElementById('advCalcResultText').innerText = finalPriceText;
+        }
+
+        function sendAdvEstimateWhatsApp() {
+            const type = document.getElementById('advCamType').value;
+            const res = document.getElementById('advCamRes').value;
+            const count = document.getElementById('advCamCount').value;
+            const hdd = document.getElementById('advHdd').value;
+            const text = document.getElementById('advCalcResultText').innerText;
+
+            const msg = `مرحباً كفوري أي تي تيك، أرغب في حجز معاينة بناءً على حاسبة الكاميرات التفصيلية:%0A- النوع: ${type}%0A- الدقة: ${res}%0A- العدد: ${count}%0A- الهارد: ${hdd}%0A- ${text}`;
+            window.open(`https://wa.me/201005258531?text=${msg}`, '_blank');
+        }
+
+        // فحص حالة الضمان
         function checkWarranty() {
             const sn = document.getElementById('serialInput').value.trim();
             const res = document.getElementById('warrantyResult');
@@ -1561,7 +1863,29 @@
             res.innerText = `المنتج برقم (${sn}) مسجل وساري الضمان لمدة 12 شهر.`;
         }
 
-        // 7. التحكم في النافذة المنبثقة Modal (طلب عرض السعر)
+        // 4. Free Inspection Request Submit
+        function submitInspectionForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('inspName').value;
+            const phone = document.getElementById('inspPhone').value;
+            const type = document.getElementById('inspType').value;
+            const date = document.getElementById('inspDate').value;
+            const address = document.getElementById('inspAddress').value;
+
+            const msg = `طلب معاينة ميدانية مجانية جديدة:%0A- الاسم: ${name}%0A- الهاتف: ${phone}%0A- المنشأة: ${type}%0A- التاريخ المطلوب: ${date}%0A- العنوان: ${address}`;
+            alert('تم استلام طلب المعاينة المجانية بنجاح، سيتم التواصل معكم فوراً لتأكيد الموعد!');
+            window.open(`https://wa.me/201005258531?text=${msg}`, '_blank');
+        }
+
+        // 6. QR Code Modal Controls
+        function openQrModal() {
+            document.getElementById('qrModal').classList.add('active');
+        }
+        function closeQrModal() {
+            document.getElementById('qrModal').classList.remove('active');
+        }
+
+        // 8. التحكم في النافذة المنبثقة Modal (طلب عرض السعر)
         function openQuoteModal() {
             document.getElementById('quoteModal').classList.add('active');
         }
@@ -1587,7 +1911,7 @@
             window.open(`https://wa.me/${targetPhone}?text=${message}`, '_blank');
         }
 
-        // 8. محاكاة نظام الإشعارات المنبثقة التلقائي (Notification Toast Engine)
+        // 9. محاكاة نظام الإشعارات المنبثقة التلقائي (Notification Toast Engine)
         const sampleNotifications = [
             { title: "طلب معاينة جديد", msg: "قام عميل من 6 أكتوبر بطلب معاينة نظام 8 كاميرات IP" },
             { title: "عقد صيانة جديد", msg: "تم توقيع عقد صيانة شبكة وسيرفرات لشركة هندسية" },
