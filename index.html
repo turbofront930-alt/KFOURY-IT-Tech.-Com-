@@ -3,439 +3,1258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كفوري أي تي تيك - KFOURY IT TECH</title>
-    <!-- Font Awesome Icons -->
+    <title>كفوري أي تي تيك | KFOURY IT TECH - حلول التكنولوجيا المتكاملة</title>
+    <!-- Google Fonts: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Light Theme */
-            --bg-color: #f8fafc;
-            --surface-color: #ffffff;
-            --text-color: #0f172a;
-            --text-secondary: #475569;
-            --primary-color: #0284c7;
-            --primary-hover: #0369a1;
-            --border-color: #e2e8f0;
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --hero-overlay: rgba(15, 23, 42, 0.75);
-        }
-
-        [data-theme="dark"] {
-            /* Dark Theme */
-            --bg-color: #0f172a;
-            --surface-color: #1e293b;
-            --text-color: #f8fafc;
-            --text-secondary: #94a3b8;
-            --primary-color: #38bdf8;
-            --primary-hover: #0284c7;
-            --border-color: #334155;
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-            --header-bg: rgba(15, 23, 42, 0.95);
-            --hero-overlay: rgba(15, 23, 42, 0.85);
+            --bg-dark: #0a0f1d;
+            --card-bg: #131b2e;
+            --primary: #00bcd4; /* أزرق سماوي مضيء */
+            --primary-hover: #008ba3;
+            --text-light: #ffffff;
+            --text-muted: #a0aec0;
+            --accent-blue: #1e88e5;
+            --whatsapp-color: #25d366;
+            --success: #00e676;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Cairo', 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 60px; /* مساحة للشريط الثابت أسفل الشاشة */
         }
 
-        /* Header Navigation */
+        /* ================= Header & Navbar ================= */
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: var(--header-bg);
+            background: rgba(10, 15, 29, 0.98);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.8rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 188, 212, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 12px 20px;
         }
 
-        .logo-container {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-light);
+            cursor: pointer;
         }
 
         .logo-img {
-            height: 45px;
-            width: 45px;
+            height: 48px;
+            width: 48px;
             object-fit: contain;
-            border-radius: 6px;
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo-text .main-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: var(--text-color);
-            line-height: 1.2;
-        }
-
-        .logo-text .sub-title {
-            font-size: 0.75rem;
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 1.5rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .controls {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-
-        .btn-control {
-            background: transparent;
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            padding: 0.5rem 0.8rem;
             border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-weight: 600;
-            font-family: inherit;
+            border: 1px solid rgba(0, 188, 212, 0.4);
         }
 
-        .btn-control:hover {
-            background-color: var(--border-color);
-        }
-
-        /* Hero Section with Team Background */
-        .hero {
-            position: relative;
-            background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), url('team-bg.jpg') center/cover no-repeat;
-            padding: 6rem 2rem;
-            text-align: center;
-            color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-        }
-
-        .hero-logo {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            margin-bottom: 1.5rem;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .hero p {
+        .logo-text h1 {
             font-size: 1.25rem;
-            max-width: 750px;
-            margin-bottom: 2rem;
-            color: #e2e8f0;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: 0.5px;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 0.9rem 2.2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            text-decoration: none;
+        .logo-text span {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .header-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 230, 118, 0.1);
+            border: 1px solid var(--success);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--success);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        /* Dropdown Navigation Menu */
+        .nav-dropdown-container {
+            position: relative;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
         }
 
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
+        .dropdown-btn {
+            background: var(--card-bg);
+            color: var(--primary);
+            border: 1px solid rgba(0, 188, 212, 0.4);
+            padding: 9px 18px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
         }
 
-        /* Services Section */
-        .services {
-            padding: 5rem 2rem;
+        .dropdown-btn:hover {
+            background: rgba(0, 188, 212, 0.15);
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(0, 188, 212, 0.3);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: #0f1628;
+            min-width: 260px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: 1100;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu ul {
+            list-style: none;
+            padding: 8px 0;
+        }
+
+        .dropdown-menu ul li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .dropdown-menu ul li a i {
+            color: var(--primary);
+            width: 20px;
+            text-align: center;
+        }
+
+        .dropdown-menu ul li a:hover,
+        .dropdown-menu ul li a.active {
+            background: rgba(0, 188, 212, 0.15);
+            color: var(--primary);
+            padding-right: 25px;
+        }
+
+        .header-btns {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .btn-call {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .btn-call:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .btn-cta {
+            background: linear-gradient(135deg, var(--primary), var(--accent-blue));
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
+        }
+
+        .btn-quote {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-quote:hover {
+            background: var(--primary);
+            color: #000;
+        }
+
+        /* ================= Single-Page View Container ================= */
+        .page-section {
+            display: none;
+            min-height: calc(100vh - 120px);
+            padding: 130px 20px 80px;
+            animation: fadeIn 0.4s ease-in-out;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .services h2 {
+        .page-section.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ================= Page 1: الصفحة الرئيسية (Hero) ================= */
+        .hero {
             text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.2rem;
+            padding: 60px 20px 80px;
+            border-radius: 20px;
+            position: relative;
+            background: linear-gradient(rgba(10, 15, 29, 0.85), rgba(10, 15, 29, 0.92)), url('team-bg.jpg') center/cover no-repeat;
+            border: 1px solid rgba(0, 188, 212, 0.25);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .hero-logo-img {
+            width: 130px;
+            height: 130px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(0, 188, 212, 0.4));
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
             font-weight: 800;
         }
 
-        .grid {
+        .hero h2 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quick-features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
         }
 
-        .card {
-            background-color: var(--surface-color);
-            padding: 2.2rem 1.8rem;
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
         }
 
-        .card i {
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
             font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
         }
 
-        .card h3 {
-            margin-bottom: 0.8rem;
-            font-size: 1.3rem;
+        /* ================= Page 2: خدمات التوريد والتركيب ================= */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .card p {
-            color: var(--text-secondary);
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15);
+        }
+
+        .service-card i {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            margin-top: 4rem;
+        /* ================= Page 3: عقود الصيانة الدورية ================= */
+        .maintenance-info {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-right: 4px solid var(--primary);
+            margin-bottom: 30px;
         }
 
-        /* Responsive */
+        .maintenance-info h3 {
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* ================= Page 4: الإحصائيات ومعرض الأعمال ================= */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(0, 188, 212, 0.15);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-card .counter {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            color: #fff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            height: 200px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            cursor: pointer;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .portfolio-item:hover {
+            border-color: var(--primary);
+            transform: scale(1.03);
+            background: rgba(0, 188, 212, 0.05);
+        }
+
+        .portfolio-item i {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .brands-box {
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .brands-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .brand-item {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px 20px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.3);
+        }
+
+        /* ================= Page 5: حاسبة التكلفة المبدئية ================= */
+        .calculator-card {
+            background: var(--card-bg);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+        }
+
+        .calc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .calc-input-group {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .calc-input-group label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .calc-input-group input {
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--primary);
+            background: #0a0f1d;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .calc-result-box {
+            margin-top: 30px;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 188, 212, 0.1);
+            border-radius: 10px;
+            border: 1px dashed var(--primary);
+        }
+
+        /* ================= Page 6: الأسئلة الشائعة وتواصل معنا ================= */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-muted);
+            display: none;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(255,255,255,0.03);
+            padding-top: 12px;
+        }
+
+        .contact-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 188, 212, 0.2);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-info-list {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 25px 0;
+        }
+
+        .contact-info-item {
+            font-size: 1.1rem;
+        }
+
+        .contact-info-item i {
+            color: var(--primary);
+            margin-left: 8px;
+        }
+
+        /* ================= Modal Window Styles (نافذة عرض السعر) ================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 500px;
+            border-radius: 15px;
+            border: 1px solid var(--primary);
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 188, 212, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .modal-header h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #ff5252;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 18px;
+            text-align: right;
+        }
+
+        .modal-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .modal-form input, .modal-form select, .modal-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 188, 212, 0.3);
+            background: #0a0f1d;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .modal-form input:focus, .modal-form select:focus, .modal-form textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 8px rgba(0, 188, 212, 0.4);
+        }
+
+        /* ================= Floating & Bottom Elements ================= */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 75px;
+            right: 25px;
+            background-color: var(--whatsapp-color);
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1500;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 75px;
+            left: 25px;
+            background: var(--card-bg);
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            z-index: 1500;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* الشريط الثابت السفلي لحقوق الملكية والتوقيع */
+        .fixed-bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #03050a;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 12px 15px;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0, 188, 212, 0.3);
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .designer-credit {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .nav-links {
-                gap: 1rem;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
+            .header-status { display: none; }
+            .hero h2 { font-size: 2rem; }
+            .dropdown-btn span { font-size: 0.85rem; }
+            .fixed-bottom-bar { flex-direction: column; text-align: center; font-size: 0.75rem; }
+            .contact-info-list { flex-direction: column; gap: 15px; }
+            .header-btns { gap: 5px; }
+            .btn-quote { display: none; } /* إخفاء زر العرض المباشر في الموبايل للحفاظ على المساحة مع إبقائه في الأزرار الأخرى */
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/201005258531?text=مرحباً%20كفوري%20أي%20تي%20تيك،%20أرغب%20في%20الاستفسار%20عن%20خدماتكم" class="floating-whatsapp" target="_blank" title="تواصل عبر واتساب">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- زر العودة للأعلى -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- الهيدر القائمة العلوية اللوحة المنسدلة -->
     <header>
-        <div class="logo-container">
-            <!-- Replace 'logo.jpg' with your logo image path -->
-            <img src="logo.jpg" alt="KFOURY IT TECH Logo" class="logo-img">
-            <div class="logo-text">
-                <span class="main-title" data-i18n="brand">كفوري أي تي تيك</span>
-                <span class="sub-title" data-i18n="sub_brand">لحلول التكنولوجيا المتكاملة</span>
+        <div class="navbar">
+            <div class="logo" onclick="switchPage('home')">
+                <img src="logo.jpg" alt="KFOURY IT TECH Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>كفوري أي تي تيك</h1>
+                    <span>KFOURY IT TECH</span>
+                </div>
             </div>
-        </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#home" data-i18n="nav_home">الرئيسية</a></li>
-                <li><a href="#services" data-i18n="nav_services">خدماتنا</a></li>
-                <li><a href="#about" data-i18n="nav_about">من نحن</a></li>
-                <li><a href="#contact" data-i18n="nav_contact">تواصل معنا</a></li>
-            </ul>
-        </nav>
-        <div class="controls">
-            <!-- Theme Toggle Button -->
-            <button class="btn-control" id="theme-toggle" aria-label="Toggle Theme">
-                <i class="fa-solid fa-moon" id="theme-icon"></i>
-                <span id="theme-text">الوضع الداكن</span>
-            </button>
-            <!-- Language Toggle Button -->
-            <button class="btn-control" id="lang-toggle">
-                <i class="fa-solid fa-globe"></i>
-                <span id="lang-text">English</span>
-            </button>
+
+            <div class="header-status">
+                <span class="status-dot"></span>
+                <span>الدعم الفني متاح الآن</span>
+            </div>
+
+            <!-- القائمة المنسدلة للتنقل بين الأقسام والصفحات -->
+            <div class="nav-dropdown-container">
+                <button class="dropdown-btn" id="dropdownBtn" onclick="toggleDropdown()">
+                    <i class="fas fa-layer-group"></i>
+                    <span id="currentCategoryText">الصفحات والأقسام</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <ul>
+                        <li><a onclick="switchPage('home')"><i class="fas fa-home"></i> الصفحة الرئيسية</a></li>
+                        <li><a onclick="switchPage('supply')"><i class="fas fa-truck-loading"></i> أولاً: التوريد والتركيب</a></li>
+                        <li><a onclick="switchPage('maintenance')"><i class="fas fa-tools"></i> ثانياً: عقود الصيانة الدورية</a></li>
+                        <li><a onclick="switchPage('stats-portfolio')"><i class="fas fa-chart-line"></i> الإحصائيات والمعرض</a></li>
+                        <li><a onclick="switchPage('calculator')"><i class="fas fa-calculator"></i> حاسبة التكلفة التقديرية</a></li>
+                        <li><a onclick="switchPage('faq-contact')"><i class="fas fa-envelope-open-text"></i> الأسئلة الشائعة والاتصال</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="header-btns">
+                <button class="btn-quote" onclick="openQuoteModal()"><i class="fas fa-file-invoice-dollar"></i> طلب عرض سعر</button>
+                <a href="tel:+201005258531" class="btn-call"><i class="fas fa-phone"></i> اتصل بنا</a>
+                <a href="https://wa.me/201005258531" target="_blank" class="btn-cta"><i class="fab fa-whatsapp"></i> واتساب</a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <!-- Main Brand Logo Image in Hero -->
-        <img src="logo.jpg" alt="KFOURY Logo" class="hero-logo">
-        <h1 data-i18n="hero_title">كفوري أي تي تيك لحلول التكنولوجيا المتكاملة</h1>
-        <p data-i18n="hero_desc">نبتكر ونطور أقوى الحلول البرمجية، المواقع الإلكترونية، وبنية التكنولوجيا الذكية لتنمية أعمالك وتطوير مستقبلك الرقمي.</p>
-        <a href="#contact" class="btn-primary" data-i18n="hero_btn">ابدأ مشروعك معنا</a>
-    </section>
+    <!-- ================= 1. الصفحة الرئيسية (Home Page) ================= -->
+    <div id="page-home" class="page-section active-page">
+        <section class="hero">
+            <img src="logo.jpg" alt="KFOURY Logo" class="hero-logo-img">
+            <h2>حلول <span>التكنولوجيا المتكاملة</span> لخدمة أعمالك</h2>
+            <p>نوفر أحدث أجهزة الكمبيوتر، أنظمة المراقبة الكاميرات، أجهزة الإنذار، وتأسيس شبكات الاتصالات مع عقود صيانة دورية شاملة تضمن استقرار منشأتك على مدار الساعة.</p>
+            <div class="hero-buttons">
+                <button onclick="openQuoteModal()" class="btn-cta" style="padding: 12px 25px; font-size: 1rem;"><i class="fas fa-file-signature"></i> طلب عرض سعر رسمي</button>
+                <button onclick="switchPage('supply')" class="btn-call" style="padding: 12px 25px; font-size: 1rem;">استكشف خدمات التوريد والتركيب</button>
+            </div>
+        </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <h2 data-i18n="services_title">خدماتنا التكنولوجية</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fa-solid fa-laptop-code"></i>
-                <h3 data-i18n="service_1_title">تطوير المواقع والأنظمة</h3>
-                <p data-i18n="service_1_desc">برمجة وتصميم مواقع متجاوبة ومنصات إلكترونية سريعة وآمنة بأعلى معايير البرمجة الحديثة.</p>
+        <div class="quick-features-grid">
+            <div class="feature-card" onclick="switchPage('supply')">
+                <i class="fas fa-desktop"></i>
+                <h3>أجهزة الكمبيوتر والملحقات</h3>
+                <p>تجهيزات شاملة لخوادم وأجهزة الشركات بأحدث المواصفات المعالجة.</p>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-mobile-screen-button"></i>
-                <h3 data-i18n="service_2_title">تطبيقات الهواتف</h3>
-                <p data-i18n="service_2_desc">بناء تطبيقات مبتكرة لأجهزة Android و iOS بتجربة استخدام سلسة وأداء ممتاذ.</p>
+            <div class="feature-card" onclick="switchPage('supply')">
+                <i class="fas fa-video"></i>
+                <h3>كاميرات المراقبة IP & Analog</h3>
+                <p>تركيب أنظمة المراقبة الذكية بدقة عالية وحماية شاملة.</p>
             </div>
-            <div class="card">
-                <i class="fa-solid fa-network-wired"></i>
-                <h3 data-i18n="service_3_title">الحلول السحابية والشبكات</h3>
-                <p data-i18n="service_3_desc">تأمين وإدارة البنية التحتية البرمجية واستشارات الاستضافة السحابية المتقدمة.</p>
+            <div class="feature-card" onclick="switchPage('maintenance')">
+                <i class="fas fa-file-contract"></i>
+                <h3>عقود صيانة دورية</h3>
+                <p>متابعة واستجابة سريعة للأعطال التقنية للحفاظ على سير العمل.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
+    <!-- ================= 2. صفحة التوريد والتركيب (Supply Page) ================= -->
+    <div id="page-supply" class="page-section">
+        <div class="section-header">
+            <h2>قسم التوريد والتركيب</h2>
+            <p>حلول متكاملة في توريد وتجهيز البنية التحتية التكنولوجية للمؤسسات والشركات</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-desktop"></i>
+                <h3>1. أجهزة الكمبيوتر والمعدات</h3>
+                <p>توريد وتجهيز أحدث أجهزة الكمبيوتر المكتبية، اللابتوب، والسيرفرات الخاصة بالشركات والمؤسسات بالضمان الرسمي.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-video"></i>
+                <h3>2. كاميرات المراقبة (CCTV)</h3>
+                <p>توريد وتركيب أحدث شبكات كاميرات المراقبة الذكية (IP & Analog) مع أجهزة التسجيل DVR/NVR والربط بالهاتف.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bell"></i>
+                <h3>3. أجهزة الإنذار والأمان</h3>
+                <p>تأمين الشركاء والمباني بأحدث أجهزة الإنذار ضد السرقة والحريق لتأمين الممتلكات بفاعلية عالية.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-network-wired"></i>
+                <h3>4. شبكات الكابلات (UTP & Fiber)</h3>
+                <p>تأسيس وربط شبكات الكابلات بجميع أنواعها (UTP والكابلات الضوئية/ألياف Fiber) بأعلى معايير الجودة والسرعة.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 3. صفحة عقود الصيانة الدورية (Maintenance Page) ================= -->
+    <div id="page-maintenance" class="page-section">
+        <div class="section-header">
+            <h2>عقود الصيانة الدورية</h2>
+            <p>نضمن استمرارية أعمالك وبنيتك التحتية بدون أي انقطاع مفاجئ</p>
+        </div>
+
+        <div class="maintenance-info">
+            <h3>لماذا تشترك في عقد صيانة دوري مع كفوري أي تي تيك؟</h3>
+            <p>يوفر لك عقد الصيانة فريق عمل متخصص يجري زيارات دورية لفحص وتحديث كافة الأنظمة التقنية المجهزة لديك والتدخل الفوري عند أي عطل.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>1. صيانة شبكات الكاميرات</h3>
+                <p>فحص واختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-microchip"></i>
+                <h3>2. صيانة أجهزة الكمبيوتر والشبكات</h3>
+                <p>دعم فني دوري للأجهزة والخوادم والشبكات الداخلية لحل أي بطء أو مشاكل تقنية قبل تأثيرها على العمل.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>3. صيانة أجهزة الإنذار</h3>
+                <p>اختبار دوري للحساسات واللوحات الرئيسية للتأكد من استجابتها الفورية وقت الطوارئ دون أي خلل.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 4. صفحة الإحصائيات والمعرض (Stats & Portfolio Page) ================= -->
+    <div id="page-stats-portfolio" class="page-section">
+        <div class="section-header">
+            <h2>إحصائياتنا ومعرض الأعمال</h2>
+            <p>أرقام تعكس ثقة عميلنا ونماذج من التأسيسات المنجزة</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <i class="fas fa-users"></i>
+                <span class="counter" data-target="250">0</span>
+                <p>عميل سعيد وثق بنا</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-project-diagram"></i>
+                <span class="counter" data-target="430">0</span>
+                <p>مشروع وتأسيس مكتمل</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-video"></i>
+                <span class="counter" data-target="1200">0</span>
+                <p>كاميرا مراقبة مجهزة</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-file-contract"></i>
+                <span class="counter" data-target="85">0</span>
+                <p>عقد صيانة دورية قائمة</p>
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 50px;">
+            <h3>نماذج من أعمال التأسيس والتجهيز</h3>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <i class="fas fa-server"></i>
+                <h4>تأسيس غرفة خوادم (Server Room)</h4>
+            </div>
+            <div class="portfolio-item">
+                <i class="fas fa-border-all"></i>
+                <h4>تركيب أنظمة كاميرات لمصنع ومؤسسة</h4>
+            </div>
+            <div class="portfolio-item">
+                <i class="fas fa-network-wired"></i>
+                <h4>تمديد شبكات UTP للشركات</h4>
+            </div>
+            <div class="portfolio-item">
+                <i class="fas fa-shield-virus"></i>
+                <h4>تأمين مقر وأجهزة إنذار متطورة</h4>
+            </div>
+        </div>
+
+        <div class="brands-box">
+            <h4>نعتمد على أفضل العلامات التجارية العالمية في التوريد:</h4>
+            <div class="brands-grid">
+                <div class="brand-item">HIKVISION</div>
+                <div class="brand-item">DAHUA</div>
+                <div class="brand-item">CISCO</div>
+                <div class="brand-item">TP-LINK</div>
+                <div class="brand-item">DELL</div>
+                <div class="brand-item">HP</div>
+                <div class="brand-item">ZKTECO</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 5. صفحة حاسبة التكلفة (Calculator Page) ================= -->
+    <div id="page-calculator" class="page-section">
+        <div class="section-header">
+            <h2>حاسبة التكلفة المبدئية</h2>
+            <p>أدخل متطلبات مشروعك للحصول على تقدير فوري وطلب معاينة ميدانية</p>
+        </div>
+
+        <div class="calculator-card">
+            <div class="calc-grid">
+                <div class="calc-input-group">
+                    <label>عدد كاميرات المراقبة المطلوبة:</label>
+                    <input type="number" id="cams" value="4" min="0" oninput="calculateCost()">
+                </div>
+                <div class="calc-input-group">
+                    <label>عدد أجهزة الكمبيوتر / السيرفرات:</label>
+                    <input type="number" id="pcs" value="2" min="0" oninput="calculateCost()">
+                </div>
+                <div class="calc-input-group">
+                    <label>أنظمة إنذار / نقاط شبكة:</label>
+                    <input type="number" id="alarms" value="1" min="0" oninput="calculateCost()">
+                </div>
+            </div>
+            <div class="calc-result-box">
+                <h4 id="totalEstimate">التقدير التقريبي للمعاينة والتجهيز المبدئي جاهز</h4>
+                <br>
+                <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap;">
+                    <button onclick="sendEstimateViaWhatsApp()" class="btn-cta" style="padding: 12px 20px;"><i class="fab fa-whatsapp"></i> طلب معاينة عبر الواتساب</button>
+                    <button onclick="openQuoteModal()" class="btn-call" style="padding: 12px 20px; border-color:var(--primary); color:var(--primary);"><i class="fas fa-file-alt"></i> تقديم طلب رسمى</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= 6. صفحة الأسئلة الشائعة والاتصال (FAQ & Contact Page) ================= -->
+    <div id="page-faq-contact" class="page-section">
+        <div class="section-header">
+            <h2>الأسئلة الشائعة والتواصل</h2>
+            <p>إجابات لأهم التساؤلات وطرق التواصل المباشر معنا</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>كيف يتم تحديد تكلفة عقد الصيانة الدوري؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    تعتمد القيمة على عدد الأجهزة، الكاميرات في المنشأة، ونوع التغطية المطلوب (زيارات أسبوعية/شهرية أو صيانة طوارئ).
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>هل توفر الشركة فترة ضمان على التوريدات والتركيب؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    نعم، كافة الأجهزة والكاميرات وشبكات الكابلات الموردة تأتي بضمان رسمي معتمد يصل إلى سنتين مع دعم فني متواصل.
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>تواصل مباشر مع كفوري أي تي تيك</h3>
+            <div class="contact-info-list">
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i> هاتف: <a href="tel:+201005258531" style="color:var(--primary); text-decoration:none;">+20 10 05258531</a>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fab fa-whatsapp"></i> واتساب: <a href="https://wa.me/201005258531" style="color:var(--primary); text-decoration:none;">+20 10 05258531</a>
+                </div>
+            </div>
+            <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px;">
+                <a href="https://wa.me/201005258531?text=مرحباً%20كفوري%20أي%20تي%20تيك" target="_blank" class="btn-cta" style="padding: 12px 25px;"><i class="fab fa-whatsapp"></i> محادثة واتساب فوري</a>
+                <button onclick="openQuoteModal()" class="btn-quote" style="padding: 12px 25px; font-size:1rem;"><i class="fas fa-file-invoice"></i> طلب عرض سعر رسمي</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= Modal Window: طلب عرض سعر رسمي ================= -->
+    <div class="modal-overlay" id="quoteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-file-signature"></i> طلب عرض سعر رسمي</h3>
+                <button class="close-modal" onclick="closeQuoteModal()">&times;</button>
+            </div>
+            <form class="modal-form" onsubmit="submitQuoteForm(event)">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> الاسم بالكامل:</label>
+                    <input type="text" id="quoteName" placeholder="أدخل اسمك الكريم" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-building"></i> اسم الشركة / المنشأة:</label>
+                    <input type="text" id="quoteCompany" placeholder="اسم جهة العمل أو الشركتك">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> رقم الهاتف / الواتساب:</label>
+                    <input type="tel" id="quotePhone" placeholder="010XXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-cog"></i> نوع الخدمة المطلوبة:</label>
+                    <select id="quoteService" required>
+                        <option value="توريد وتركيب كاميرات مراقبة">توريد وتركيب كاميرات مراقبة</option>
+                        <option value="توريد أجهزة كمبيوتر وسيرفرات">توريد أجهزة كمبيوتر وسيرفرات</option>
+                        <option value="تأسيس شبكات UTP و ألياف Fiber">تأسيس شبكات UTP وألياف Fiber</option>
+                        <option value="عقد صيانة دورية شامل">عقد صيانة دورية شامل</option>
+                        <option value="أنظمة إنذار وأمان">أنظمة إنذار وأمان</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-pen"></i> تفاصيل إضافية (اختياري):</label>
+                    <textarea id="quoteNotes" rows="3" placeholder="اكتب أي ملاحظات أو تفاصيل للموقع..."></textarea>
+                </div>
+                <button type="submit" class="btn-cta" style="width: 100%; padding: 12px; font-size: 1rem;"><i class="fas fa-paper-plane"></i> إرسال الطلب الآن</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= Footer & Fixed Bottom Bar ================= -->
     <footer>
-        <p>&copy; 2026 <span data-i18n="brand">كفوري أي تي تيك</span>. <span data-i18n="footer_rights">جميع الحقوق محفوظة</span>.</p>
+        <div class="fixed-bottom-bar">
+            <div>
+                &copy; 2026 جميع الحقوق محفوظة لشركة <strong>كفوري أي تي تيك - KFOURY IT TECH</strong>
+            </div>
+            <div>
+                تصميم وبرمجة: <span class="designer-credit">مهندس / Ebrahim Saad Abdelmawla Mohamed</span>
+            </div>
+        </div>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- ================= JavaScript Controller ================= -->
     <script>
-        // Dictionary for Arabic and English
-        const translations = {
-            ar: {
-                brand: "كفوري أي تي تيك",
-                sub_brand: "لحلول التكنولوجيا المتكاملة",
-                nav_home: "الرئيسية",
-                nav_services: "خدماتنا",
-                nav_about: "من نحن",
-                nav_contact: "تواصل معنا",
-                theme_dark: "الوضع الداكن",
-                theme_light: "الوضع المضيء",
-                hero_title: "كفوري أي تي تيك لحلول التكنولوجيا المتكاملة",
-                hero_desc: "نبتكر ونطور أقوى الحلول البرمجية، المواقع الإلكترونية، وبنية التكنولوجيا الذكية لتنمية أعمالك وتطوير مستقبلك الرقمي.",
-                hero_btn: "ابدأ مشروعك معنا",
-                services_title: "خدماتنا التكنولوجية",
-                service_1_title: "تطوير المواقع والأنظمة",
-                service_1_desc: "برمجة وتصميم مواقع متجاوبة ومنصات إلكترونية سريعة وآمنة بأعلى معايير البرمجة الحديثة.",
-                service_2_title: "تطبيقات الهواتف",
-                service_2_desc: "بناء تطبيقات مبتكرة لأجهزة Android و iOS بتجربة استخدام سلسة وأداء ممتاذ.",
-                service_3_title: "الحلول السحابية والشبكات",
-                service_3_desc: "تأمين وإدارة البنية التحتية البرمجية واستشارات الاستضافة السحابية المتقدمة.",
-                footer_rights: "جميع الحقوق محفوظة"
-            },
-            en: {
-                brand: "KFOURY IT TECH",
-                sub_brand: "Integrated IT Solutions",
-                nav_home: "Home",
-                nav_services: "Services",
-                nav_about: "About Us",
-                nav_contact: "Contact",
-                theme_dark: "Dark Mode",
-                theme_light: "Light Mode",
-                hero_title: "KFOURY IT TECH Integrated Solutions",
-                hero_desc: "Innovating and developing robust software, websites, and smart IT infrastructure to empower your business.",
-                hero_btn: "Start Your Project",
-                services_title: "Our IT Services",
-                service_1_title: "Web & Systems Development",
-                service_1_desc: "Designing and developing fast, responsive, and secure websites and web systems.",
-                service_2_title: "Mobile Applications",
-                service_2_desc: "Building innovative Android and iOS apps with seamless UX and exceptional performance.",
-                service_3_title: "Cloud & Network Solutions",
-                service_3_desc: "Securing and managing software infrastructure along with advanced cloud consulting.",
-                footer_rights: "All rights reserved"
-            }
-        };
+        // 1. التحكم في القائمة المنسدلة Dropdown Menu
+        function toggleDropdown() {
+            const menu = document.getElementById('dropdownMenu');
+            menu.classList.toggle('show');
+        }
 
-        // Theme Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const themeText = document.getElementById('theme-text');
-
-        let currentTheme = localStorage.getItem('theme') || 'light';
-        setTheme(currentTheme);
-
-        themeToggleBtn.addEventListener('click', () => {
-            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(currentTheme);
-        });
-
-        function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-            const lang = localStorage.getItem('lang') || 'ar';
-            
-            if (theme === 'dark') {
-                themeIcon.className = 'fa-solid fa-sun';
-                themeText.textContent = translations[lang].theme_light;
-            } else {
-                themeIcon.className = 'fa-solid fa-moon';
-                themeText.textContent = translations[lang].theme_dark;
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropdown-btn') && !event.target.matches('.dropdown-btn *')) {
+                const dropdowns = document.getElementsByClassName("dropdown-menu");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    let openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
             }
         }
 
-        // Language Toggle
-        const langToggleBtn = document.getElementById('lang-toggle');
-        const langText = document.getElementById('lang-text');
-        let currentLang = localStorage.getItem('lang') || 'ar';
-        
-        setLanguage(currentLang);
+        // 2. نظام التنقل والتحويل بين الصفحات والأقسام
+        function switchPage(pageId) {
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active-page'));
 
-        langToggleBtn.addEventListener('click', () => {
-            currentLang = currentLang === 'ar' ? 'en' : 'ar';
-            setLanguage(currentLang);
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active-page');
+            }
+
+            const menu = document.getElementById('dropdownMenu');
+            if (menu) menu.classList.remove('show');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (pageId === 'stats-portfolio') {
+                startCounters();
+            }
+        }
+
+        // 3. كود العدادات التفاعلية
+        let animated = false;
+        function startCounters() {
+            if (animated) return;
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / 150;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                updateCount();
+            });
+            animated = true;
+        }
+
+        // 4. زر العودة للأعلى
+        window.addEventListener('scroll', () => {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
         });
 
-        function setLanguage(lang) {
-            document.documentElement.setAttribute('lang', lang);
-            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            localStorage.setItem('lang', lang);
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.textContent = translations[lang][key];
-                }
-            });
+        // 5. الأسئلة الشائعة FAQ Toggle
+        function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            const isVisible = answer.style.display === 'block';
+            answer.style.display = isVisible ? 'none' : 'block';
+        }
 
-            const activeTheme = document.documentElement.getAttribute('data-theme');
-            themeText.textContent = activeTheme === 'dark' ? translations[lang].theme_light : translations[lang].theme_dark;
-            langText.textContent = lang === 'ar' ? 'English' : 'عربي';
+        // 6. حاسبة التكلفة والتحويل للواتساب
+        function calculateCost() {
+            const cams = parseInt(document.getElementById('cams').value) || 0;
+            const pcs = parseInt(document.getElementById('pcs').value) || 0;
+            const alarms = parseInt(document.getElementById('alarms').value) || 0;
+            
+            document.getElementById('totalEstimate').innerText = `تم اختيار: ${cams} كاميرات - ${pcs} كمبيوتر/سيرفر - ${alarms} أنظمة إنذار/شبكات`;
+        }
+
+        function sendEstimateViaWhatsApp() {
+            const cams = document.getElementById('cams').value;
+            const pcs = document.getElementById('pcs').value;
+            const alarms = document.getElementById('alarms').value;
+            const phone = "201005258531";
+
+            const message = `مرحباً كفوري أي تي تيك،%0Aأرغب في معاينة وتجهيز موقعي بحسب التقدير التالي:%0A- الكاميرات: ${cams}%0A- الكمبيوتر/الشبكات: ${pcs}%0A- أنظمة أمان/إنذار: ${alarms}`;
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        }
+
+        // 7. التحكم في النافذة المنبثقة Modal (طلب عرض السعر)
+        function openQuoteModal() {
+            document.getElementById('quoteModal').classList.add('active');
+        }
+
+        function closeQuoteModal() {
+            document.getElementById('quoteModal').classList.remove('active');
+        }
+
+        function submitQuoteForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('quoteName').value;
+            const company = document.getElementById('quoteCompany').value || "غير محدد";
+            const phone = document.getElementById('quotePhone').value;
+            const service = document.getElementById('quoteService').value;
+            const notes = document.getElementById('quoteNotes').value || "لا يوجد";
+
+            const targetPhone = "201005258531";
+            const message = `طلب عرض سعر رسمي جديد:%0A- الاسم: ${name}%0A- الشركة: ${company}%0A- الهاتف: ${phone}%0A- الخدمة المطلوبة: ${service}%0A- ملاحظات: ${notes}`;
+
+            alert('شكراً لك، تم تجهيز بيانات الطلب وسيتم تحويلها مباشرة لخدمة العملاء!');
+            closeQuoteModal();
+            
+            // فتح الواتساب مجهزاً بالبيانات التي ادخلها العميل في النموذج
+            window.open(`https://wa.me/${targetPhone}?text=${message}`, '_blank');
         }
     </script>
 </body>
