@@ -19,6 +19,7 @@
             --text-muted: #a0aec0;
             --accent-blue: #1e88e5;
             --whatsapp-color: #25d366;
+            --facebook-color: #1877f2;
             --success: #00e676;
         }
 
@@ -397,6 +398,9 @@
             border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .service-card:hover {
@@ -419,6 +423,23 @@
         .service-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
+        }
+
+        .product-price-tag {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 12px 0;
+            display: block;
+        }
+
+        .product-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 188, 212, 0.2);
         }
 
         /* ================= Page 3: عقود الصيانة الدورية ================= */
@@ -473,7 +494,7 @@
 
         .portfolio-item {
             background: var(--card-bg);
-            height: 200px;
+            min-height: 220px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -797,9 +818,33 @@
             transform: scale(1.1);
         }
 
+        /* Floating Facebook Button */
+        .floating-facebook {
+            position: fixed;
+            bottom: 140px;
+            right: 25px;
+            background-color: var(--facebook-color);
+            color: #fff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+            z-index: 1500;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .floating-facebook:hover {
+            transform: scale(1.1);
+        }
+
         .back-to-top {
             position: fixed;
-            bottom: 145px; /* رفع الزر قليلاً لمنع التداخل مع الإشعار المنبثق */
+            bottom: 145px;
             left: 25px;
             background: var(--card-bg);
             color: var(--primary);
@@ -859,6 +904,8 @@
             header { top: 32px; }
             .top-announcement-bar { font-size: 0.75rem; padding: 6px 10px; }
             .toast-notification { left: 10px; right: 10px; max-width: none; bottom: 75px; }
+            .floating-facebook { bottom: 135px; right: 20px; width: 50px; height: 50px; font-size: 22px; }
+            .floating-whatsapp { bottom: 75px; right: 20px; width: 50px; height: 50px; font-size: 24px; }
         }
     </style>
 </head>
@@ -869,6 +916,11 @@
         <i class="fas fa-bullhorn"></i>
         <span>خصم خاص 10% على عقود الصيانة السنوية وتركيب كاميرات IP لفترة محدودة!</span>
     </div>
+
+    <!-- زر الفيس بوك العائم -->
+    <a href="https://www.facebook.com/ahmed.kamal.498728" class="floating-facebook" target="_blank" title="تابعنا على فيسبوك">
+        <i class="fab fa-facebook-f"></i>
+    </a>
 
     <!-- زر الواتساب العائم -->
     <a href="https://wa.me/201005258531?text=مرحباً%20كفوري%20أي%20تي%20تيك،%20أرغب%20في%20الاستفسار%20عن%20خدماتكم" class="floating-whatsapp" target="_blank" title="تواصل عبر واتساب">
@@ -915,8 +967,9 @@
                 <div class="dropdown-menu" id="dropdownMenu">
                     <ul>
                         <li><a onclick="switchPage('home')"><i class="fas fa-home"></i> الصفحة الرئيسية</a></li>
-                        <li><a onclick="switchPage('supply')"><i class="fas fa-truck-loading"></i> أولاً: التوريد والتركيب</a></li>
-                        <li><a onclick="switchPage('maintenance')"><i class="fas fa-tools"></i> ثانياً: عقود الصيانة الدورية</a></li>
+                        <li><a onclick="switchPage('products')"><i class="fas fa-box-open"></i> منتجاتنا وأسعارنا</a></li>
+                        <li><a onclick="switchPage('supply')"><i class="fas fa-truck-loading"></i> التوريد والتركيب</a></li>
+                        <li><a onclick="switchPage('maintenance')"><i class="fas fa-tools"></i> عقود الصيانة الدورية</a></li>
                         <li><a onclick="switchPage('stats-portfolio')"><i class="fas fa-chart-line"></i> الإحصائيات والمعرض</a></li>
                         <li><a onclick="switchPage('calculator')"><i class="fas fa-calculator"></i> حاسبة التكلفة التقديرية</a></li>
                         <li><a onclick="switchPage('faq-contact')"><i class="fas fa-envelope-open-text"></i> الأسئلة الشائعة والاتصال</a></li>
@@ -940,20 +993,20 @@
             <p>نوفر أحدث أجهزة الكمبيوتر، أنظمة المراقبة الكاميرات، أجهزة الإنذار، وتأسيس شبكات الاتصالات مع عقود صيانة دورية شاملة تضمن استقرار منشأتك على مدار الساعة.</p>
             <div class="hero-buttons">
                 <button onclick="openQuoteModal()" class="btn-cta" style="padding: 12px 25px; font-size: 1rem;"><i class="fas fa-file-signature"></i> طلب عرض سعر رسمي</button>
-                <button onclick="switchPage('supply')" class="btn-call" style="padding: 12px 25px; font-size: 1rem;">استكشف خدمات التوريد والتركيب</button>
+                <button onclick="switchPage('products')" class="btn-call" style="padding: 12px 25px; font-size: 1rem;"><i class="fas fa-tag"></i> تصفح المنتجات والأسعار</button>
             </div>
         </section>
 
         <div class="quick-features-grid">
+            <div class="feature-card" onclick="switchPage('products')">
+                <i class="fas fa-shopping-cart"></i>
+                <h3>المنتجات والأسعار</h3>
+                <p>استعرض أحدث منتجات أجهزة الكمبيوتر، الشبكات والكاميرات مع أسعارها.</p>
+            </div>
             <div class="feature-card" onclick="switchPage('supply')">
                 <i class="fas fa-desktop"></i>
                 <h3>أجهزة الكمبيوتر والملحقات</h3>
                 <p>تجهيزات شاملة لخوادم وأجهزة الشركات بأحدث المواصفات المعالجة.</p>
-            </div>
-            <div class="feature-card" onclick="switchPage('supply')">
-                <i class="fas fa-video"></i>
-                <h3>كاميرات المراقبة IP & Analog</h3>
-                <p>تركيب أنظمة المراقبة الذكية بدقة عالية وحماية شاملة.</p>
             </div>
             <div class="feature-card" onclick="switchPage('maintenance')">
                 <i class="fas fa-file-contract"></i>
@@ -963,7 +1016,19 @@
         </div>
     </div>
 
-    <!-- ================= 2. صفحة التوريد والتركيب (Supply Page) ================= -->
+    <!-- ================= 2. صفحة المنتجات والأسعار (Products Page) ================= -->
+    <div id="page-products" class="page-section">
+        <div class="section-header">
+            <h2>قسم المنتجات والأسعار</h2>
+            <p>منتجات تقنية متطورة بأفضل الأشكال والأسعار المتاحة مع ضمان الموزع المعتمد</p>
+        </div>
+
+        <div class="services-grid" id="dynamic-products-container">
+            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">جاري تحميل المنتجات من قاعدة البيانات...</p>
+        </div>
+    </div>
+
+    <!-- ================= 3. صفحة التوريد والتركيب (Supply Page) ================= -->
     <div id="page-supply" class="page-section">
         <div class="section-header">
             <h2>قسم التوريد والتركيب</h2>
@@ -994,7 +1059,7 @@
         </div>
     </div>
 
-    <!-- ================= 3. صفحة عقود الصيانة الدورية (Maintenance Page) ================= -->
+    <!-- ================= 4. صفحة عقود الصيانة الدورية (Maintenance Page) ================= -->
     <div id="page-maintenance" class="page-section">
         <div class="section-header">
             <h2>عقود الصيانة الدورية</h2>
@@ -1010,7 +1075,7 @@
             <div class="service-card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>1. صيانة شبكات الكاميرات</h3>
-                <p>فحص واختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
+                <p>فحص وااختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-microchip"></i>
@@ -1025,7 +1090,7 @@
         </div>
     </div>
 
-    <!-- ================= 4. صفحة الإحصائيات والمعرض (Stats & Portfolio Page) ================= -->
+    <!-- ================= 5. صفحة الإحصائيات والمعرض (Stats & Portfolio Page) ================= -->
     <div id="page-stats-portfolio" class="page-section">
         <div class="section-header">
             <h2>إحصائياتنا ومعرض الأعمال</h2>
@@ -1056,25 +1121,10 @@
         </div>
 
         <div class="section-header" style="margin-top: 50px;">
-            <h3>نماذج من أعمال التأسيس والتجهيز</h3>
+            <h3>نماذج من أعمال التأسيس والمشاريع المكتملة</h3>
         </div>
-        <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <i class="fas fa-server"></i>
-                <h4>تأسيس غرفة خوادم (Server Room)</h4>
-            </div>
-            <div class="portfolio-item">
-                <i class="fas fa-border-all"></i>
-                <h4>تركيب أنظمة كاميرات لمصنع ومؤسسة</h4>
-            </div>
-            <div class="portfolio-item">
-                <i class="fas fa-network-wired"></i>
-                <h4>تمديد شبكات UTP للشركات</h4>
-            </div>
-            <div class="portfolio-item">
-                <i class="fas fa-shield-virus"></i>
-                <h4>تأمين مقر وأجهزة إنذار متطورة</h4>
-            </div>
+        <div class="portfolio-grid" id="dynamic-projects-container">
+            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">جاري تحميل المشاريع...</p>
         </div>
 
         <div class="brands-box">
@@ -1091,7 +1141,7 @@
         </div>
     </div>
 
-    <!-- ================= 5. صفحة حاسبة التكلفة (Calculator Page) ================= -->
+    <!-- ================= 6. صفحة حاسبة التكلفة (Calculator Page) ================= -->
     <div id="page-calculator" class="page-section">
         <div class="section-header">
             <h2>حاسبة التكلفة المبدئية</h2>
@@ -1124,7 +1174,7 @@
         </div>
     </div>
 
-    <!-- ================= 6. صفحة الأسئلة الشائعة والاتصال (FAQ & Contact Page) ================= -->
+    <!-- ================= 7. صفحة الأسئلة الشائعة والاتصال (FAQ & Contact Page) ================= -->
     <div id="page-faq-contact" class="page-section">
         <div class="section-header">
             <h2>الأسئلة الشائعة والتواصل</h2>
@@ -1160,6 +1210,9 @@
                 </div>
                 <div class="contact-info-item">
                     <i class="fab fa-whatsapp"></i> واتساب: <a href="https://wa.me/201005258531" style="color:var(--primary); text-decoration:none;">+20 10 05258531</a>
+                </div>
+                <div class="contact-info-item">
+                    <i class="fab fa-facebook"></i> فيسبوك: <a href="https://www.facebook.com/ahmed.kamal.498728" target="_blank" style="color:var(--primary); text-decoration:none;">صفحتنا الرسمية</a>
                 </div>
             </div>
             <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; margin-top:20px;">
@@ -1379,6 +1432,72 @@
             showNextToast();
             setInterval(showNextToast, 16000);
         }, 4000);
+    </script>
+
+    <!-- ================= Firebase Binding for Dynamic Admin Support ================= -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBI_-xyfznsUZOdDPRRG3TDaxbtgfqteL8",
+            authDomain: "turbofront-23e10.firebaseapp.com",
+            projectId: "turbofront-23e10",
+            storageBucket: "turbofront-23e10.firebasestorage.app",
+            messagingSenderId: "989007662566",
+            appId: "1:989007662566:web:ab90726f1cd01412459a27",
+            measurementId: "G-VD89G6W80L"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // 1. مزامنة وجلب المنتجات المضافة من لوحة التحكم
+        const productsContainer = document.getElementById('dynamic-products-container');
+        onSnapshot(collection(db, "products"), (snapshot) => {
+            if (snapshot.empty) {
+                productsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">لا توجد منتجات مضافة حالياً في لوحة التحكم.</p>';
+                return;
+            }
+            productsContainer.innerHTML = snapshot.docs.map(doc => {
+                const p = doc.data();
+                return `
+                    <div class="service-card">
+                        <img src="${p.image || p.imageUrl || 'https://placehold.co/300x200?text=KFOURY+IT'}" class="product-card-img" alt="${p.name || p.title}">
+                        <h3>${p.name || p.title || 'منتج جديد'}</h3>
+                        <p>${p.description || ''}</p>
+                        <span class="product-price-tag">${p.price} ج.م</span>
+                        <a href="https://wa.me/201005258531?text=${encodeURIComponent('مرحباً كفوري أي تي تيك، أرغب في شراء أو الاستفسار عن: ' + (p.name || p.title))}" target="_blank" class="btn-cta" style="text-align: center; display: block; margin-top: 10px;">
+                            <i class="fab fa-whatsapp"></i> طلب المنتج الآن
+                        </a>
+                    </div>
+                `;
+            }).join('');
+        });
+
+        // 2. مزامنة وجلب المشاريع المضافة من لوحة التحكم
+        const projectsContainer = document.getElementById('dynamic-projects-container');
+        onSnapshot(collection(db, "projects"), (snapshot) => {
+            if (snapshot.empty) {
+                projectsContainer.innerHTML = `
+                    <div class="portfolio-item"><i class="fas fa-server"></i><h4>تأسيس غرفة خوادم (Server Room)</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-border-all"></i><h4>تركيب أنظمة كاميرات لمصنع ومؤسسة</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-network-wired"></i><h4>تمديد شبكات UTP للشركات</h4></div>
+                    <div class="portfolio-item"><i class="fas fa-shield-virus"></i><h4>تأمين مقر وأجهزة إنذار متطورة</h4></div>
+                `;
+                return;
+            }
+            projectsContainer.innerHTML = snapshot.docs.map(doc => {
+                const proj = doc.data();
+                return `
+                    <div class="portfolio-item" style="background-image: linear-gradient(rgba(10,15,29,0.85), rgba(10,15,29,0.85)), url('${proj.image || ''}'); background-size: cover; background-position: center;">
+                        <i class="fas fa-project-diagram"></i>
+                        <h4>${proj.title}</h4>
+                        <p style="font-size:0.85rem; color: var(--text-muted); margin-top: 5px;">${proj.description || ''}</p>
+                    </div>
+                `;
+            }).join('');
+        });
     </script>
 </body>
 </html>
