@@ -21,6 +21,7 @@
             --whatsapp-color: #25d366;
             --facebook-color: #1877f2;
             --success: #00e676;
+            --warning: #ffb300;
         }
 
         * {
@@ -284,7 +285,7 @@
         .page-section {
             display: none;
             min-height: calc(100vh - 120px);
-            padding: 160px 20px 80px; /* زيادة مساحة البادينج للتأكد من مراعاة شريط الإعلان الهيدر */
+            padding: 160px 20px 80px; /* مساحة بادينج متناسقة مع الهيدر */
             animation: fadeIn 0.4s ease-in-out;
             max-width: 1200px;
             margin: 0 auto;
@@ -362,6 +363,7 @@
         .feature-card:hover {
             border-color: var(--primary);
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 188, 212, 0.15);
         }
 
         .feature-card i {
@@ -370,7 +372,7 @@
             margin-bottom: 15px;
         }
 
-        /* ================= Page 2: خدمات التوريد والتركيب ================= */
+        /* ================= Page 2: خدمات التوريد والتركيب والمنتجات ================= */
         .section-header {
             text-align: center;
             margin-bottom: 40px;
@@ -455,6 +457,26 @@
             font-size: 1.3rem;
             color: var(--primary);
             margin-bottom: 10px;
+        }
+
+        .maintenance-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .maintenance-table th, .maintenance-table td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .maintenance-table th {
+            background: rgba(0, 188, 212, 0.15);
+            color: var(--primary);
         }
 
         /* ================= Page 4: الإحصائيات ومعرض الأعمال ================= */
@@ -544,6 +566,12 @@
             padding: 8px 20px;
             border-radius: 8px;
             background: rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+
+        .brand-item:hover {
+            border-color: var(--primary);
+            color: var(--primary);
         }
 
         /* ================= Page 5: حاسبة التكلفة المبدئية ================= */
@@ -1013,6 +1041,11 @@
                 <h3>عقود صيانة دورية</h3>
                 <p>متابعة واستجابة سريعة للأعطال التقنية للحفاظ على سير العمل.</p>
             </div>
+            <div class="feature-card" onclick="switchPage('calculator')">
+                <i class="fas fa-calculator"></i>
+                <h3>حاسبة المقايسات</h3>
+                <p>احسب التكلفة التقديرية لتأسيس موقعك واطلب معاينة مباشرة.</p>
+            </div>
         </div>
     </div>
 
@@ -1049,12 +1082,22 @@
             <div class="service-card">
                 <i class="fas fa-bell"></i>
                 <h3>3. أجهزة الإنذار والأمان</h3>
-                <p>تأمين الشركاء والمباني بأحدث أجهزة الإنذار ضد السرقة والحريق لتأمين الممتلكات بفاعلية عالية.</p>
+                <p>تأمين الشركات والمباني بأحدث أجهزة الإنذار ضد السرقة والحريق لتأمين الممتلكات بفاعلية عالية.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-network-wired"></i>
                 <h3>4. شبكات الكابلات (UTP & Fiber)</h3>
                 <p>تأسيس وربط شبكات الكابلات بجميع أنواعها (UTP والكابلات الضوئية/ألياف Fiber) بأعلى معايير الجودة والسرعة.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-fingerprint"></i>
+                <h3>5. أجهزة أكسس كنترول والبصمة</h3>
+                <p>توريد وبرمجة أجهزة الحضور والانصراف بالبصمة وجه وأبواب الدخول الذكية لضبط أمن المنشآت.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-wifi"></i>
+                <h3>6. تقوية تغطية الواي فاي (Wi-Fi Solutions)</h3>
+                <p>تركيب وتجهيز نقاط الوصول (Access Points) لتغطية المساحات الكبيرة والشركات بشبكة فائقة السرعة.</p>
             </div>
         </div>
     </div>
@@ -1068,14 +1111,14 @@
 
         <div class="maintenance-info">
             <h3>لماذا تشترك في عقد صيانة دوري مع كفوري أي تي تيك؟</h3>
-            <p>يوفر لك عقد الصيانة فريق عمل متخصص يجري زيارات دورية لفحص وتحديث كافة الأنظمة التقنية المجهزة لديك والتدخل الفوري عند أي عطل.</p>
+            <p>يوفر لك عقد الصيانة فريق عمل متخصص يجري زيارات دورية لفحص وتحديث كافة الأنظمة التقنية المجهزة لديك والتدخل الفوري عند أي عطل طارئ مع استجابة خلال ساعات.</p>
         </div>
 
         <div class="services-grid">
             <div class="service-card">
                 <i class="fas fa-shield-alt"></i>
                 <h3>1. صيانة شبكات الكاميرات</h3>
-                <p>فحص وااختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
+                <p>فحص واختبار دائم للكاميرات، أجهزة التسجيل (DVR/NVR)، والكابلات وضبط زوايا التصوير بصفة مستمرة.</p>
             </div>
             <div class="service-card">
                 <i class="fas fa-microchip"></i>
@@ -1088,6 +1131,38 @@
                 <p>اختبار دوري للحساسات واللوحات الرئيسية للتأكد من استجابتها الفورية وقت الطوارئ دون أي خلل.</p>
             </div>
         </div>
+
+        <!-- جدول تفصيلي لباقات الصيانة -->
+        <table class="maintenance-table">
+            <thead>
+                <tr>
+                    <th>نوع العقد</th>
+                    <th>الزيارات الدورية</th>
+                    <th>الدعم الفني الميداني</th>
+                    <th>الاستجابة للطوارئ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>البرونزي</strong></td>
+                    <td>زيارة واحدة شهرياً</td>
+                    <td>متاح طوال الأسبوع عبر الهاتف</td>
+                    <td>خلال 24 ساعة</td>
+                </tr>
+                <tr>
+                    <td><strong>الفضي</strong></td>
+                    <td>زيارتان شهرياً</td>
+                    <td>دعم مجاني عن بُعد وطوارئ</td>
+                    <td>خلال 12 ساعة</td>
+                </tr>
+                <tr>
+                    <td><strong>الذهبي الشامل</strong></td>
+                    <td>أسبوعياً / حسب الطلب</td>
+                    <td>دعم ميداني متواصل ومباشر</td>
+                    <td>استجابة فورية خلال 3 ساعات</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- ================= 5. صفحة الإحصائيات والمعرض (Stats & Portfolio Page) ================= -->
@@ -1137,6 +1212,7 @@
                 <div class="brand-item">DELL</div>
                 <div class="brand-item">HP</div>
                 <div class="brand-item">ZKTECO</div>
+                <div class="brand-item">D-LINK</div>
             </div>
         </div>
     </div>
@@ -1200,6 +1276,15 @@
                     نعم، كافة الأجهزة والكاميرات وشبكات الكابلات الموردة تأتي بضمان رسمي معتمد يصل إلى سنتين مع دعم فني متواصل.
                 </div>
             </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>هل يتم تقديم خدمة المعاينة الميدانية قبل التأسيس؟</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    بالتأكيد، يقوم فريقنا الهندسي بزيارة موقعك لعمل رفع مساحي وتحديد نقاط التغطية المثالية وتقديم مقايسة مضبوطة مجاناً.
+                </div>
+            </div>
         </div>
 
         <div class="contact-box">
@@ -1250,6 +1335,7 @@
                         <option value="تأسيس شبكات UTP و ألياف Fiber">تأسيس شبكات UTP وألياف Fiber</option>
                         <option value="عقد صيانة دورية شامل">عقد صيانة دورية شامل</option>
                         <option value="أنظمة إنذار وأمان">أنظمة إنذار وأمان</option>
+                        <option value="أجهزة بصمة وأكسس كنترول">أجهزة بصمة وأكسس كنترول</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -1321,12 +1407,12 @@
             counters.forEach(counter => {
                 const updateCount = () => {
                     const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const inc = target / 150;
+                    const count = +counter.innerText.replace('+', '');
+                    const inc = Math.ceil(target / 100);
 
                     if (count < target) {
-                        counter.innerText = Math.ceil(count + inc);
-                        setTimeout(updateCount, 15);
+                        counter.innerText = (count + inc > target ? target : count + inc) + "+";
+                        setTimeout(updateCount, 20);
                     } else {
                         counter.innerText = target + "+";
                     }
@@ -1407,7 +1493,8 @@
             { title: "طلب معاينة جديد", msg: "قام عميل من 6 أكتوبر بطلب معاينة نظام 8 كاميرات IP" },
             { title: "عقد صيانة جديد", msg: "تم توقيع عقد صيانة شبكة وسيرفرات لشركة هندسية" },
             { title: "طلب عرض سعر", msg: "تم إرسال عرض سعر لتجهيز معمل كمبيوتر بالكامل" },
-            { title: "استفسار دعم فني", msg: "قام عميل من المنوفية بطلب فحص شبكة كابلات UTP" }
+            { title: "استفسار دعم فني", msg: "قام عميل من المنوفية بطلب فحص شبكة كابلات UTP" },
+            { title: "تأكيد تركيبة جديدة", msg: "تم الانتهاء من تركيب نظام حضور وانصراف بالبصمة" }
         ];
 
         function showNextToast() {
