@@ -3,242 +3,519 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Turbo Front | Eng / Ebrahim Saad </title>
+    <title>كفوري أي تي تيك - KFOURY IT TECH</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <meta name="description" content="موقع المهندس إبراهيم سعد لتصميم المواقع والمتاجر الإلكترونية وكروت الأفراح الرقمية باحترافية.">
-    <meta name="keywords" content="إبراهيم سعد, تصميم مواقع, متجر واتساب, كارت فرح رقمي, Turbo Front, برمجة مواقع مصر">
-    <meta name="author" content="Engineer Ibrahim Saad">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>
-        tailwind.config = { darkMode: 'class' }
-    </script>
     <style>
-        body { font-family: 'Cairo', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-        .filter-container::-webkit-scrollbar { display: none; }
-        .stat-card { transition: all 0.3s ease; }
-        .stat-card:hover { transform: translateY(-5px); }
+        :root {
+            /* Light Theme */
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-color: #0f172a;
+            --text-secondary: #475569;
+            --primary-color: #0284c7;
+            --primary-hover: #0369a1;
+            --border-color: #e2e8f0;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --hero-overlay: rgba(15, 23, 42, 0.75);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Theme */
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --text-color: #f8fafc;
+            --text-secondary: #94a3b8;
+            --primary-color: #38bdf8;
+            --primary-hover: #0284c7;
+            --border-color: #334155;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --hero-overlay: rgba(15, 23, 42, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Cairo', 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: 45px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-text .main-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+
+        .logo-text .sub-title {
+            font-size: 0.75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .btn-control {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 600;
+            font-family: inherit;
+        }
+
+        .btn-control:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Hero Section with Team Background */
+        .hero {
+            position: relative;
+            background: linear-gradient(var(--hero-overlay), var(--hero-overlay)), url('team-bg.jpg') center/cover no-repeat;
+            padding: 6rem 2rem;
+            text-align: center;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 750px;
+            margin-bottom: 2rem;
+            color: #e2e8f0;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.9rem 2.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Services & Sections */
+        .services, .products-section, .projects-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services h2, .products-section h2, .projects-section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            padding: 2.2rem 1.8rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        /* Floating Facebook Button */
         .facebook-float {
             position: fixed;
-            bottom: 80px;
-            left: 16px;
-            z-index: 1001;
-            transition: all 0.3s ease;
+            bottom: 25px;
+            right: 25px;
+            background-color: #1877f2;
+            color: #ffffff;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(24, 119, 242, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
         }
+
         .facebook-float:hover {
             transform: scale(1.1);
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-white pb-20">
+<body>
 
-    <!-- زر وضع الليل/النهار -->
-    <button onclick="toggleDarkMode()" class="fixed top-24 left-4 z-[1001] bg-gray-800 dark:bg-yellow-400 text-white dark:text-black p-3 rounded-full shadow-lg">
-        <i id="theme-icon" class="fas fa-moon"></i>
-    </button>
-
-    <!-- إضافة زر صفحة الفيسبوك العائم -->
-    <a href="https://www.facebook.com/ahmed.kamal.498728" target="_blank" class="facebook-float bg-blue-600 text-white p-3.5 rounded-full shadow-xl flex items-center justify-center w-12 h-12" title="صفحتنا على فيسبوك">
-        <i class="fab fa-facebook-f text-xl"></i>
-    </a>
-
-    <div class="bg-red-600 text-white text-center py-2 font-bold text-xs sticky top-0 z-[1000]">
-        ينتهي عرض الخصم الحصري خلال: <span id="countdown">00:00:00</span>
-    </div>
-
-    <header class="p-6 bg-white dark:bg-gray-800 shadow-md text-center border-b-4 border-blue-600">
-        <h1 class="text-4xl font-extrabold text-blue-600 dark:text-blue-400 tracking-tighter uppercase">TURBO FRONT</h1>
-        <p class="mt-1 text-sm font-bold">مهندس / إبراهيم سعد عبد المولى</p>
-        
-        <div class="mt-4">
-            <a href="profile.pdf" download class="inline-flex items-center gap-2 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-200 transition">
-                <i class="fas fa-file-pdf"></i> تحميل بروفايل الخدمات (PDF)
-            </a>
+    <!-- Header Section -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="KFOURY IT TECH Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="main-title" data-i18n="brand">كفوري أي تي تيك</span>
+                <span class="sub-title" data-i18n="sub_brand">لحلول التكنولوجيا المتكاملة</span>
+            </div>
         </div>
-
-        <div class="flex filter-container overflow-x-auto gap-2 mt-6 px-2 justify-center">
-            <button onclick="filterProducts('all')" class="whitespace-nowrap bg-blue-600 text-white px-5 py-2 rounded-full text-xs font-bold shadow-md">الكل</button>
-            <button onclick="filterProducts('web')" class="whitespace-nowrap bg-gray-200 dark:bg-gray-700 px-5 py-2 rounded-full text-xs">مواقع</button>
-            <button onclick="filterProducts('e-store')" class="whitespace-nowrap bg-gray-200 dark:bg-gray-700 px-5 py-2 rounded-full text-xs">متاجر</button>
-            <button onclick="filterProducts('invitation')" class="whitespace-nowrap bg-gray-200 dark:bg-gray-700 px-5 py-2 rounded-full text-xs">كروت فرح</button>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home" data-i18n="nav_home">الرئيسية</a></li>
+                <li><a href="#services" data-i18n="nav_services">خدماتنا</a></li>
+                <li><a href="#products" data-i18n="nav_products">المنتجات والأسعار</a></li>
+                <li><a href="#projects" data-i18n="nav_projects">المشاريع</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">تواصل معنا</a></li>
+            </ul>
+        </nav>
+        <div class="controls">
+            <!-- Theme Toggle Button -->
+            <button class="btn-control" id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+                <span id="theme-text">الوضع الداكن</span>
+            </button>
+            <!-- Language Toggle Button -->
+            <button class="btn-control" id="lang-toggle">
+                <i class="fa-solid fa-globe"></i>
+                <span id="lang-text">English</span>
+            </button>
         </div>
     </header>
 
-    <section class="container mx-auto py-10 px-4">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div class="stat-card p-6 bg-blue-600 text-white rounded-2xl shadow-xl">
-                <i class="fas fa-shopping-cart text-2xl mb-2"></i>
-                <div class="text-3xl font-black">+10</div>
-                <div class="text-[10px] font-bold uppercase">متاجر إلكترونية</div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="logo.jpg" alt="KFOURY Logo" class="hero-logo">
+        <h1 data-i18n="hero_title">كفوري أي تي تيك لحلول التكنولوجيا المتكاملة</h1>
+        <p data-i18n="hero_desc">نبتكر ونطور أقوى الحلول البرمجية، المواقع الإلكترونية، وبنية التكنولوجيا الذكية لتنمية أعمالك وتطوير مستقبلك الرقمي.</p>
+        <a href="#contact" class="btn-primary" data-i18n="hero_btn">ابدأ مشروعك معنا</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 data-i18n="services_title">خدماتنا التكنولوجية</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <h3 data-i18n="service_1_title">تطوير المواقع والأنظمة</h3>
+                <p data-i18n="service_1_desc">برمجة وتصميم مواقع متجاوبة ومنصات إلكترونية سريعة وآمنة بأعلى معايير البرمجة الحديثة.</p>
             </div>
-            <div class="stat-card p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border-b-4 border-blue-600">
-                <i class="fas fa-heart text-2xl mb-2 text-blue-600"></i>
-                <div class="text-3xl font-black text-blue-600">+50</div>
-                <div class="text-[10px] font-bold uppercase opacity-70">كروت أفراح</div>
+            <div class="card">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <h3 data-i18n="service_2_title">تطبيقات الهواتف</h3>
+                <p data-i18n="service_2_desc">بناء تطبيقات مبتكرة لأجهزة Android و iOS بتجربة استخدام سلسة وأداء ممتاذ.</p>
             </div>
-            <div class="stat-card p-6 bg-blue-600 text-white rounded-2xl shadow-xl">
-                <i class="fas fa-users text-2xl mb-2"></i>
-                <div class="text-3xl font-black">+100</div>
-                <div class="text-[10px] font-bold uppercase">عملاء راضون</div>
-            </div>
-            <div class="stat-card p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg border-b-4 border-blue-600">
-                <i class="fas fa-code text-2xl mb-2 text-blue-600"></i>
-                <div class="text-3xl font-black text-blue-600">2026</div>
-                <div class="text-[10px] font-bold uppercase opacity-70">أحدث التقنيات</div>
+            <div class="card">
+                <i class="fa-solid fa-network-wired"></i>
+                <h3 data-i18n="service_3_title">الحلول السحابية والشبكات</h3>
+                <p data-i18n="service_3_desc">تأمين وإدارة البنية التحتية البرمجية واستشارات الاستضافة السحابية المتقدمة.</p>
             </div>
         </div>
     </section>
 
-    <section class="container mx-auto py-8 px-4 bg-white dark:bg-gray-800 rounded-3xl shadow-sm my-10">
-        <h2 class="text-xl font-bold mb-8 border-r-4 border-blue-600 pr-2">فريق العمل والخبرة</h2>
-        <div class="flex flex-col md:flex-row items-center gap-8 px-4">
-            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-blue-600 overflow-hidden shadow-lg shrink-0">
-                <img src="ibrahim.jpg" alt="المهندس إبراهيم سعد" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/150x150/2563eb/FFF?text=Ibrahim'">
-            </div>
-            <div class="text-right">
-                <h3 class="text-2xl font-bold text-blue-600">المهندس إبراهيم سعد عبد المولى</h3>
-                <p class="font-bold text-sm mt-1">IT Engineer & Web Developer</p>
-                <p class="text-sm mt-4 opacity-80 leading-relaxed">
-                    متخصص في هندسة تكنولوجيا المعلومات وتطوير حلول التجارة الإلكترونية المبتكرة. قمنا بتنفيذ أكثر من 100 مشروع ناجح يجمع بين الكفاءة البرمجية وسهولة الاستخدام للعميل المصري.
-                </p>
-                <div class="flex gap-4 mt-4">
-                    <span class="text-[10px] bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full font-bold italic">#Experience_2026</span>
-                    <span class="text-[10px] bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full font-bold italic">#IT_Expert</span>
-                </div>
-            </div>
+    <!-- Products & Prices Section (مربوط بالـ Admin) -->
+    <section class="products-section" id="products">
+        <h2 data-i18n="products_title">المنتجات والأسعار</h2>
+        <div class="grid" id="dynamic-products-container">
+            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);" data-i18n="loading_products">جاري تحميل المنتجات...</p>
         </div>
     </section>
 
-    <section class="container mx-auto py-4 px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm border-r-4 border-blue-600 flex items-center gap-4">
-            <i class="fas fa-rocket text-2xl text-blue-600"></i>
-            <div><h3 class="font-bold text-sm">سرعة فائقة</h3><p class="text-[10px] opacity-70">تسليم خلال 48 ساعة فقط.</p></div>
-        </div>
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm border-r-4 border-blue-600 flex items-center gap-4">
-            <i class="fas fa-infinity text-2xl text-blue-600"></i>
-            <div><h3 class="font-bold text-sm">استضافة مجانية</h3><p class="text-[10px] opacity-70">بدون أي مصاريف تجديد سنوية.</p></div>
-        </div>
-        <div class="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-sm border-r-4 border-blue-600 flex items-center gap-4">
-            <i class="fas fa-headset text-2xl text-blue-600"></i>
-            <div><h3 class="font-bold text-sm">دعم فني هندسي</h3><p class="text-[10px] opacity-70">تواصل مباشر لحل أي استفسار.</p></div>
+    <!-- Dynamic Projects Section (مربوط بالـ Admin) -->
+    <section class="projects-section" id="projects">
+        <h2 data-i18n="projects_title">معرض الأعمال والمشاريع</h2>
+        <div class="grid" id="dynamic-projects-container">
+            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary);" data-i18n="loading_projects">جاري تحميل المشاريع...</p>
         </div>
     </section>
 
-    <!-- باقات الخدمات المتاحة (ثابتة) -->
-    <main class="container mx-auto p-4">
-        <h2 class="text-xl font-bold mb-6 border-r-4 border-blue-600 pr-2">باقات الخدمات المتاحة</h2>
-        <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-    </main>
+    <!-- Floating Facebook Button -->
+    <a href="https://www.facebook.com/ahmed.kamal.498728" target="_blank" class="facebook-float" title="تابعنا على فيسبوك">
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
 
-    <!-- إضافة قسم المنتجات المضافة ديناميكياً مع أسعارها (مربوط بالـ Admin Panel) -->
-    <section class="container mx-auto py-10 px-4 bg-white dark:bg-gray-800 rounded-3xl my-10 shadow-md">
-        <h2 class="text-2xl font-bold mb-8 text-center text-blue-600">منتجاتنا المتاحة والأسعار</h2>
-        <div id="dynamic-products-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <p class="text-center col-span-full opacity-60">جاري تحميل المنتجات...</p>
-        </div>
-    </section>
-
-    <!-- معرض المشاريع المحدث الذي يعرض اللوجو الخاص بكل موقع -->
-    <section class="container mx-auto py-10 px-4 bg-gray-100 dark:bg-gray-800 rounded-3xl my-10 shadow-inner">
-        <h2 class="text-2xl font-bold mb-8 text-center text-blue-600">نماذج من أعمالي السابقة</h2>
-        <div id="dynamic-projects-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <p class="text-center col-span-full opacity-60">جاري تحميل المشاريع...</p>
-        </div>
-    </section>
-
-    <section class="container mx-auto py-10 px-4">
-        <h2 class="text-xl font-bold mb-8 text-center">اعتماد الجودة والأمان</h2>
-        <div class="flex flex-wrap justify-center gap-8 opacity-60">
-            <div class="flex flex-col items-center">
-                <i class="fas fa-shield-alt text-4xl mb-2 text-green-600"></i>
-                <span class="text-[10px] font-bold uppercase">SSL Secured</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-check-double text-4xl mb-2 text-blue-600"></i>
-                <span class="text-[10px] font-bold uppercase">Quality Checked</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-user-shield text-4xl mb-2 text-purple-600"></i>
-                <span class="text-[10px] font-bold uppercase">Data Privacy</span>
-            </div>
-            <div class="flex flex-col items-center">
-                <i class="fas fa-certificate text-4xl mb-2 text-yellow-500"></i>
-                <span class="text-[10px] font-bold uppercase">Certified Dev</span>
-            </div>
-        </div>
-    </section>
-
-    <section class="container mx-auto py-8 px-4 border-t dark:border-gray-800 pt-10">
-        <h2 class="text-xl font-bold mb-6 border-r-4 border-blue-600 pr-2">المدونة التقنية</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
-            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl border-t-2 border-blue-600 shadow-sm">
-                <h4 class="font-bold text-blue-600 mb-2">لماذا متجر الواتساب؟</h4>
-                <p class="opacity-80">أسرع وسيلة للبيع المباشر وزيادة الأرباح بدون عمولات دفع.</p>
-            </div>
-            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl border-t-2 border-blue-600 shadow-sm">
-                <h4 class="font-bold text-blue-600 mb-2">قوة الاستضافة المجانية</h4>
-                <p class="opacity-80">نعتمد على GitHub Pages لتقديم استضافة آمنة ومجانية مدى الحياة.</p>
-            </div>
-            <div class="p-4 bg-gray-50 dark:bg-gray-800 rounded-xl border-t-2 border-blue-600 shadow-sm">
-                <h4 class="font-bold text-blue-600 mb-2">هويتك الرقمية 2026</h4>
-                <p class="opacity-80">موقعك هو مقرك الرسمي أمام محركات البحث وعملائك.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="order-form" class="container mx-auto py-10 px-4 bg-white dark:bg-gray-800 rounded-3xl shadow-xl my-10 border-2 border-blue-600 mx-4">
-        <h2 class="text-2xl font-bold mb-6 text-center text-blue-600">تواصل معي لطلب مشروعك</h2>
-        <form class="max-w-xl mx-auto space-y-3">
-            <input type="text" id="custName" placeholder="الاسم بالكامل" class="w-full p-3 border rounded-lg dark:bg-gray-700 text-sm" required>
-            <input type="tel" id="custPhone" placeholder="رقم الواتساب" class="w-full p-3 border rounded-lg dark:bg-gray-700 text-sm" required>
-            <select id="projectType" class="w-full p-3 border rounded-lg dark:bg-gray-700 text-sm">
-                <option value="موقع تعريفي">موقع تعريفي</option>
-                <option value="متجر متكامل">متجر واتساب</option>
-                <option value="كارت فرح">كارت فرح رقمي</option>
-                <option value="باقة VIP">باقة VIP المتكاملة</option>
-            </select>
-            <textarea id="projectDetails" placeholder="تفاصيل سريعة عن طلبك..." class="w-full p-3 border rounded-lg h-24 dark:bg-gray-700 text-sm"></textarea>
-            <button type="button" onclick="sendToWhatsApp()" class="w-full bg-green-600 text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2">
-                <i class="fab fa-whatsapp"></i> إرسال الطلب عبر الواتساب
-            </button>
-        </form>
-    </section>
-
-    <footer class="fixed bottom-0 left-0 w-full bg-blue-600 text-white py-3 z-50 text-center shadow-lg">
-        <p class="font-bold text-xs uppercase tracking-widest">Developed by: المهندس إبراهيم سعد </p>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 <span data-i18n="brand">كفوري أي تي تيك</span>. <span data-i18n="footer_rights">جميع الحقوق محفوظة</span>.</p>
     </footer>
 
+    <!-- JavaScript Logic & Translations -->
     <script>
-        function toggleDarkMode() {
-            document.documentElement.classList.toggle('dark');
-            const icon = document.getElementById('theme-icon');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
+        // Dictionary for Arabic and English
+        const translations = {
+            ar: {
+                brand: "كفوري أي تي تيك",
+                sub_brand: "لحلول التكنولوجيا المتكاملة",
+                nav_home: "الرئيسية",
+                nav_services: "خدماتنا",
+                nav_products: "المنتجات والأسعار",
+                nav_projects: "المشاريع",
+                nav_about: "من نحن",
+                nav_contact: "تواصل معنا",
+                theme_dark: "الوضع الداكن",
+                theme_light: "الوضع المضيء",
+                hero_title: "كفوري أي تي تيك لحلول التكنولوجيا المتكاملة",
+                hero_desc: "نبتكر ونطور أقوى الحلول البرمجية، المواقع الإلكترونية، وبنية التكنولوجيا الذكية لتنمية أعمالك وتطوير مستقبلك الرقمي.",
+                hero_btn: "ابدأ مشروعك معنا",
+                services_title: "خدماتنا التكنولوجية",
+                service_1_title: "تطوير المواقع والأنظمة",
+                service_1_desc: "برمجة وتصميم مواقع متجاوبة ومنصات إلكترونية سريعة وآمنة بأعلى معايير البرمجة الحديثة.",
+                service_2_title: "تطبيقات الهواتف",
+                service_2_desc: "بناء تطبيقات مبتكرة لأجهزة Android و iOS بتجربة استخدام سلسة وأداء ممتاذ.",
+                service_3_title: "الحلول السحابية والشبكات",
+                service_3_desc: "تأمين وإدارة البنية التحتية البرمجية واستشارات الاستضافة السحابية المتقدمة.",
+                products_title: "المنتجات والأسعار",
+                projects_title: "معرض الأعمال والمشاريع",
+                loading_products: "جاري تحميل المنتجات...",
+                loading_projects: "جاري تحميل المشاريع...",
+                footer_rights: "جميع الحقوق محفوظة"
+            },
+            en: {
+                brand: "KFOURY IT TECH",
+                sub_brand: "Integrated IT Solutions",
+                nav_home: "Home",
+                nav_services: "Services",
+                nav_products: "Products & Pricing",
+                nav_projects: "Projects",
+                nav_about: "About Us",
+                nav_contact: "Contact",
+                theme_dark: "Dark Mode",
+                theme_light: "Light Mode",
+                hero_title: "KFOURY IT TECH Integrated Solutions",
+                hero_desc: "Innovating and developing robust software, websites, and smart IT infrastructure to empower your business.",
+                hero_btn: "Start Your Project",
+                services_title: "Our IT Services",
+                service_1_title: "Web & Systems Development",
+                service_1_desc: "Designing and developing fast, responsive, and secure websites and web systems.",
+                service_2_title: "Mobile Applications",
+                service_2_desc: "Building innovative Android and iOS apps with seamless UX and exceptional performance.",
+                service_3_title: "Cloud & Network Solutions",
+                service_3_desc: "Securing and managing software infrastructure along with advanced cloud consulting.",
+                products_title: "Products & Pricing",
+                projects_title: "Portfolio & Projects",
+                loading_products: "Loading products...",
+                loading_projects: "Loading projects...",
+                footer_rights: "All rights reserved"
+            }
+        };
+
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+
+        let currentTheme = localStorage.getItem('theme') || 'light';
+        setTheme(currentTheme);
+
+        themeToggleBtn.addEventListener('click', () => {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setTheme(currentTheme);
+        });
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            const lang = localStorage.getItem('lang') || 'ar';
+            
+            if (theme === 'dark') {
+                themeIcon.className = 'fa-solid fa-sun';
+                themeText.textContent = translations[lang].theme_light;
+            } else {
+                themeIcon.className = 'fa-solid fa-moon';
+                themeText.textContent = translations[lang].theme_dark;
+            }
         }
 
-        let time = 86400; 
-        setInterval(() => {
-            let h = Math.floor(time / 3600);
-            let m = Math.floor((time % 3600) / 60);
-            let s = time % 60;
-            document.getElementById('countdown').innerHTML = `${h}:${m}:${s}`;
-            if (time > 0) time--;
-        }, 1000);
+        // Language Toggle
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const langText = document.getElementById('lang-text');
+        let currentLang = localStorage.getItem('lang') || 'ar';
+        
+        setLanguage(currentLang);
 
-        function sendToWhatsApp() {
-            const name = document.getElementById('custName').value;
-            const phone = document.getElementById('custPhone').value;
-            const type = document.getElementById('projectType').value;
-            const details = document.getElementById('projectDetails').value;
-            const message = `*طلب جديد من Turbo Front*%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*الخدمة:* ${type}%0A*التفاصيل:* ${details}`;
-            window.open(`https://wa.me/201101475409?text=${message}`, '_blank');
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            setLanguage(currentLang);
+        });
+
+        function setLanguage(lang) {
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            localStorage.setItem('lang', lang);
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            const activeTheme = document.documentElement.getAttribute('data-theme');
+            themeText.textContent = activeTheme === 'dark' ? translations[lang].theme_light : translations[lang].theme_dark;
+            langText.textContent = lang === 'ar' ? 'English' : 'عربي';
         }
     </script>
-    <script src="script.js"></script>
 
-    <!-- ربط Firebase وجلب المشاريع والمنتجات ديناميكياً من لوحة التحكم -->
+    <!-- Firebase Binding Logic for Admin Panel Dynamic Sync -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -256,60 +533,42 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // 1. جلب المشاريع ديناميكياً من لوحة التحكم
-        const projectsContainer = document.getElementById('dynamic-projects-container');
-        const qProjects = collection(db, "projects");
-
-        onSnapshot(qProjects, (snapshot) => {
+        // Fetch Dynamic Products
+        const productsContainer = document.getElementById('dynamic-products-container');
+        onSnapshot(collection(db, "products"), (snapshot) => {
             if (snapshot.empty) {
-                projectsContainer.innerHTML = '<p class="text-center col-span-full opacity-60">لا توجد مشاريع مضافة حالياً.</p>';
+                productsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; opacity: 0.7;">لا توجد منتجات مضافة حالياً.</p>';
                 return;
             }
-
-            projectsContainer.innerHTML = snapshot.docs.map(doc => {
-                const proj = doc.data();
+            productsContainer.innerHTML = snapshot.docs.map(doc => {
+                const p = doc.data();
                 return `
-                    <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group p-5 flex flex-col items-center text-center border border-gray-100 dark:border-gray-600">
-                        <div class="w-20 h-20 bg-blue-50 dark:bg-gray-800 rounded-full flex items-center justify-center p-3 mb-4 shadow-inner group-hover:scale-110 transition">
-                            <img src="${proj.image}" class="w-12 h-12 object-contain" onerror="this.src='https://placehold.co/100x100/2563eb/FFF?text=Logo'">
-                        </div>
-                        <h4 class="font-bold text-base mb-4 text-gray-800 dark:text-white">${proj.title}</h4>
-                        <a href="${proj.link}" target="_blank" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-xl text-xs font-bold transition shadow-sm flex items-center justify-center gap-2">
-                            <span>معاينة الموقع</span>
-                            <i class="fas fa-external-link-alt text-[10px]"></i>
-                        </a>
+                    <div class="card">
+                        <img src="${p.image || p.imageUrl || 'https://placehold.co/300x200?text=Product'}" class="product-img" alt="${p.name || p.title}">
+                        <h3>${p.name || p.title || 'منتج'}</h3>
+                        <p>${p.description || ''}</p>
+                        <div class="product-price">${p.price} ج.م</div>
+                        <a href="https://wa.me/201101475409?text=${encodeURIComponent('طلب استفسار عن: ' + (p.name || p.title))}" target="_blank" class="btn-primary" style="text-align: center;">طلب المنتج</a>
                     </div>
                 `;
             }).join('');
         });
 
-        // 2. جلب المنتجات والأسعار ديناميكياً من لوحة التحكم (مجموعة products)
-        const productsContainer = document.getElementById('dynamic-products-container');
-        const qProducts = collection(db, "products");
-
-        onSnapshot(qProducts, (snapshot) => {
+        // Fetch Dynamic Projects
+        const projectsContainer = document.getElementById('dynamic-projects-container');
+        onSnapshot(collection(db, "projects"), (snapshot) => {
             if (snapshot.empty) {
-                productsContainer.innerHTML = '<p class="text-center col-span-full opacity-60">لا توجد منتجات مضافة حالياً.</p>';
+                projectsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; opacity: 0.7;">لا توجد مشاريع مضافة حالياً.</p>';
                 return;
             }
-
-            productsContainer.innerHTML = snapshot.docs.map(doc => {
-                const prod = doc.data();
+            projectsContainer.innerHTML = snapshot.docs.map(doc => {
+                const proj = doc.data();
                 return `
-                    <div class="bg-gray-50 dark:bg-gray-700 rounded-2xl overflow-hidden shadow-md border border-gray-200 dark:border-gray-600 p-4 flex flex-col justify-between hover:shadow-lg transition">
-                        <div>
-                            <div class="w-full h-40 bg-white dark:bg-gray-800 rounded-xl overflow-hidden mb-3 flex items-center justify-center">
-                                <img src="${prod.image || prod.imageUrl || 'https://placehold.co/300x200/2563eb/FFF?text=Product'}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/300x200/2563eb/FFF?text=Product'">
-                            </div>
-                            <h4 class="font-bold text-base mb-1 text-gray-900 dark:text-white">${prod.name || prod.title || 'منتج'}</h4>
-                            <p class="text-xs text-gray-500 dark:text-gray-300 mb-3 opacity-80">${prod.description || ''}</p>
-                        </div>
-                        <div>
-                            <div class="text-lg font-black text-green-600 dark:text-green-400 mb-3">${prod.price} ج.م</div>
-                            <button onclick="window.open('https://wa.me/201101475409?text=' + encodeURIComponent('مرحباً أود الاستفسار/طلب منتج: ' + '${prod.name || prod.title}'), '_blank')" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
-                                <i class="fab fa-whatsapp"></i> طلب المنتج
-                            </button>
-                        </div>
+                    <div class="card">
+                        <img src="${proj.image || 'https://placehold.co/300x200?text=Project'}" class="product-img" alt="${proj.title}">
+                        <h3>${proj.title}</h3>
+                        <p>${proj.description || ''}</p>
+                        <a href="${proj.link || '#'}" target="_blank" class="btn-primary" style="text-align: center;">معاينة المشروع</a>
                     </div>
                 `;
             }).join('');
