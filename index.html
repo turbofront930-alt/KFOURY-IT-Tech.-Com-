@@ -21,6 +21,7 @@
             --whatsapp-color: #25d366;
             --facebook-color: #1877f2;
             --success: #00e676;
+            --danger: #ff5252;
             --gold: #ffd700;
             --input-bg: #0a0f1d;
             --border-color: rgba(0, 188, 212, 0.3);
@@ -301,6 +302,17 @@
             box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
         }
 
+        .btn-danger {
+            background: var(--danger);
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 8px;
+        }
+
         .btn-quote {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid var(--primary);
@@ -439,6 +451,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
         .service-card:hover {
@@ -589,7 +602,7 @@
 
         .portfolio-item {
             background: var(--card-bg);
-            min-height: 220px;
+            min-height: 180px;
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -600,6 +613,7 @@
             cursor: pointer;
             text-align: center;
             padding: 20px;
+            position: relative;
         }
 
         .portfolio-item:hover {
@@ -1242,7 +1256,7 @@
         </div>
 
         <div class="services-grid" id="dynamic-products-container">
-            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">جاري تحميل المنتجات من قاعدة البيانات...</p>
+            <p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">جاري تحميل المنتجات...</p>
         </div>
     </div>
 
@@ -1433,7 +1447,6 @@
             <p>أدخل متطلبات مشروعك للحصول على تقدير فوري وطلب معاينة ميدانية</p>
         </div>
 
-        <!-- الحاسبة التقديرية العامة السابقة -->
         <div class="calculator-card">
             <div class="calc-grid">
                 <div class="calc-input-group">
@@ -1458,7 +1471,6 @@
                 </div>
             </div>
 
-            <!-- فاحص حالة الضمان السريع -->
             <div class="warranty-box">
                 <h4><i class="fas fa-shield-check" style="color:var(--primary);"></i> فاحص الضمان السريع للمنتجات</h4>
                 <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">أدخل الرقم التسلسلي (Serial Number) للتأكد من فترة الضمان مع الشركة</p>
@@ -1470,7 +1482,6 @@
             </div>
         </div>
 
-        <!-- 1. Interactive Camera Cost Calculator & 2. Currency Converter -->
         <div class="adv-calc-container">
             <div class="currency-toggle-container">
                 <span style="font-size:0.9rem; font-weight:bold;">اختر العملة:</span>
@@ -1549,7 +1560,6 @@
             </div>
         </div>
 
-        <!-- 4. Free Inspection Request Form Section -->
         <div class="inspection-card">
             <h3 style="color:var(--primary); text-align:center; margin-bottom:10px;"><i class="fas fa-clipboard-check"></i> طلب معاينة ميدانية مجانية للموقع</h3>
             <p style="text-align:center; color:var(--text-muted); margin-bottom:25px; font-size:0.9rem;">قم بتعبئة النموذج وسيقوم مهندس المعاينة بالتواصل معك لتأكيد الموعد</p>
@@ -1604,7 +1614,6 @@
                 <button onclick="openQuoteModal()" class="btn-quote" style="padding: 12px 25px; font-size:1rem;"><i class="fas fa-file-invoice"></i> طلب عرض سعر رسمي</button>
             </div>
 
-            <!-- خريطة الموقع -->
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.6038954117!2d31.2357116!3d30.0444196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2sCairo%2C%20Egypt!5e0!3m2!1sen!2seg!4v1680000000000!5m2!1sen!2seg" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
@@ -1680,7 +1689,6 @@
 
     <!-- ================= JavaScript Controller ================= -->
     <script>
-        // 1. التحكم في القائمة المنسدلة Dropdown Menu
         function toggleDropdown() {
             const menu = document.getElementById('dropdownMenu');
             menu.classList.toggle('show');
@@ -1698,7 +1706,6 @@
             }
         }
 
-        // 2. نظام التنقل والتحويل بين الصفحات والأقسام
         function switchPage(pageId) {
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active-page'));
@@ -1721,7 +1728,6 @@
             }
         }
 
-        // 3. Dark / Light Mode Toggle System
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const btnText = document.getElementById('themeBtnText');
@@ -1735,7 +1741,6 @@
             }
         }
 
-        // 4. كود العدادات التفاعلية
         let animated = false;
         function startCounters() {
             if (animated) return;
@@ -1758,7 +1763,6 @@
             animated = true;
         }
 
-        // 5. زر العودة للأعلى
         window.addEventListener('scroll', () => {
             const backToTopBtn = document.getElementById('backToTop');
             if (window.scrollY > 300) {
@@ -1772,14 +1776,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // 6. الأسئلة الشائعة FAQ Toggle
         function toggleFaq(element) {
             const answer = element.nextElementSibling;
             const isVisible = answer.style.display === 'block';
             answer.style.display = isVisible ? 'none' : 'block';
         }
 
-        // 7. حاسبة التكلفة العادية
         function calculateCost() {
             const cams = parseInt(document.getElementById('cams').value) || 0;
             const pcs = parseInt(document.getElementById('pcs').value) || 0;
@@ -1798,9 +1800,8 @@
             window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
         }
 
-        // 1 & 2. Interactive Camera Cost Calculator & Currency Converter Logic
         let currentCurrency = 'EGP';
-        const usdExchangeRate = 48; // سعر تحويل افتراضي للدولار
+        const usdExchangeRate = 48;
 
         function setCurrency(curr) {
             currentCurrency = curr;
@@ -1850,7 +1851,6 @@
             window.open(`https://wa.me/201005258531?text=${msg}`, '_blank');
         }
 
-        // فحص حالة الضمان
         function checkWarranty() {
             const sn = document.getElementById('serialInput').value.trim();
             const res = document.getElementById('warrantyResult');
@@ -1863,7 +1863,6 @@
             res.innerText = `المنتج برقم (${sn}) مسجل وساري الضمان لمدة 12 شهر.`;
         }
 
-        // 4. Free Inspection Request Submit
         function submitInspectionForm(event) {
             event.preventDefault();
             const name = document.getElementById('inspName').value;
@@ -1877,7 +1876,6 @@
             window.open(`https://wa.me/201005258531?text=${msg}`, '_blank');
         }
 
-        // 6. QR Code Modal Controls
         function openQrModal() {
             document.getElementById('qrModal').classList.add('active');
         }
@@ -1885,7 +1883,6 @@
             document.getElementById('qrModal').classList.remove('active');
         }
 
-        // 8. التحكم في النافذة المنبثقة Modal (طلب عرض السعر)
         function openQuoteModal() {
             document.getElementById('quoteModal').classList.add('active');
         }
@@ -1911,7 +1908,6 @@
             window.open(`https://wa.me/${targetPhone}?text=${message}`, '_blank');
         }
 
-        // 9. محاكاة نظام الإشعارات المنبثقة التلقائي (Notification Toast Engine)
         const sampleNotifications = [
             { title: "طلب معاينة جديد", msg: "قام عميل من 6 أكتوبر بطلب معاينة نظام 8 كاميرات IP" },
             { title: "عقد صيانة جديد", msg: "تم توقيع عقد صيانة شبكة وسيرفرات لشركة هندسية" },
@@ -1941,10 +1937,10 @@
         }, 4000);
     </script>
 
-    <!-- ================= Firebase Binding for Dynamic Admin Support ================= -->
+    <!-- ================= Firebase Binding with Dynamic Admin Full Operations ================= -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, collection, onSnapshot, doc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBI_-xyfznsUZOdDPRRG3TDaxbtgfqteL8",
@@ -1959,15 +1955,39 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // 1. مزامنة وجلب المنتجات المضافة من لوحة التحكم
+        // جعل وظيفة الحذف متاحة دولياً لاستدعائها عند ضغط الزر من قِبل الأدمن
+        window.deleteProductItem = async function(id) {
+            if(confirm("هل أنت تأكد من إزالة هذا المنتج؟")) {
+                try {
+                    await deleteDoc(doc(db, "products", id));
+                    alert("تم حذف المنتج بنجاح");
+                } catch(err) {
+                    console.error("خطأ أثناء الحذف:", err);
+                }
+            }
+        };
+
+        window.deleteProjectItem = async function(id) {
+            if(confirm("هل أنت تأكد من إزالة هذا المشروع؟")) {
+                try {
+                    await deleteDoc(doc(db, "projects", id));
+                    alert("تم حذف المشروع بنجاح");
+                } catch(err) {
+                    console.error("خطأ أثناء الحذف:", err);
+                }
+            }
+        };
+
+        // 1. مزامنة وعرض المنتجات المضافة من لوحة التحكم + زر الحذف
         const productsContainer = document.getElementById('dynamic-products-container');
         onSnapshot(collection(db, "products"), (snapshot) => {
             if (snapshot.empty) {
                 productsContainer.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">لا توجد منتجات مضافة حالياً في لوحة التحكم.</p>';
                 return;
             }
-            productsContainer.innerHTML = snapshot.docs.map(doc => {
-                const p = doc.data();
+            productsContainer.innerHTML = snapshot.docs.map(document => {
+                const p = document.data();
+                const docId = document.id;
                 return `
                     <div class="service-card">
                         <img src="${p.image || p.imageUrl || 'https://placehold.co/300x200?text=KFOURY+IT'}" class="product-card-img" alt="${p.name || p.title}">
@@ -1977,41 +1997,54 @@
                         <a href="https://wa.me/201005258531?text=${encodeURIComponent('مرحباً كفوري أي تي تيك، أرغب في شراء أو الاستفسار عن: ' + (p.name || p.title))}" target="_blank" class="btn-cta" style="text-align: center; display: block; margin-top: 10px;">
                             <i class="fab fa-whatsapp"></i> طلب المنتج الآن
                         </a>
+                        <button onclick="window.deleteProductItem('${docId}')" class="btn-danger"><i class="fas fa-trash-alt"></i> حذف المنتج (أدمن)</button>
                     </div>
                 `;
             }).join('');
         });
 
-        // 2. مزامنة وجلب المشاريع المضافة من لوحة التحكم
+        // 2. مزامنة المشاريع القادمة من قاعدة البيانات + المشاريع الافتراضية المحددة
+        const defaultProjectsList = [
+            { icon: "fas fa-shopping-basket", title: "ماركت خير بلدنا" },
+            { icon: "fas fa-store", title: "ماركت البرعي" },
+            { icon: "fas fa-laptop-code", title: "شركة حلول التقنية" },
+            { icon: "fas fa-couch", title: "مصنع أولاد العم للأثاث" },
+            { icon: "fas fa-building", title: "شركة العربي للمقاولات" },
+            { icon: "fas fa-hamburger", title: "شركة أفاق فاست فوود" },
+            { icon: "fas fa-tree", title: "شركة وود ماستر للأخشاب" },
+            { icon: "fas fa-cut", title: "محل أبو علي للحلاقة" },
+            { icon: "fas fa-cut", title: "محل الديزل للحلاقة" },
+            { icon: "fas fa-cut", title: "محل زيكا للحلاقة" },
+            { icon: "fas fa-shopping-cart", title: "ماركت الحمد" },
+            { icon: "fas fa-home", title: "فيلا لواء / محمد علواني" },
+            { icon: "fas fa-home", title: "فيلا نقيب / علي الكردي" }
+        ];
+
         const projectsContainer = document.getElementById('dynamic-projects-container');
         onSnapshot(collection(db, "projects"), (snapshot) => {
-            if (snapshot.empty) {
-                projectsContainer.innerHTML = `
-                    <div class="portfolio-item"><i class="fas fa-shopping-basket"></i><h4>ماركت خير بلدنا</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-store"></i><h4>ماركت البرعي</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-laptop-code"></i><h4>شركه حلول التقنيه</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-couch"></i><h4>مصنع اولاد العم للاثاث</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-building"></i><h4>شركه العربي للمقاولات</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-hamburger"></i><h4>شركه أفاق فاست فوود</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-tree"></i><h4>شركه وود ماستر للاخشاب</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-cut"></i><h4>محل ابو علي للحلاقه</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-cut"></i><h4>محل الديزل للحلاقه</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-cut"></i><h4>محل زيكا للحلاقه</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-shopping-cart"></i><h4>ماركت الحمد</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-home"></i><h4>فيلا لواء / محمد علواني</h4></div>
-                    <div class="portfolio-item"><i class="fas fa-home"></i><h4>فيلا نقيب / على الكردي</h4></div>
-                `;
-                return;
+            let htmlContent = defaultProjectsList.map(proj => `
+                <div class="portfolio-item">
+                    <i class="${proj.icon}"></i>
+                    <h4>${proj.title}</h4>
+                </div>
+            `).join('');
+
+            if (!snapshot.empty) {
+                const dynamicDbProjects = snapshot.docs.map(docSnap => {
+                    const proj = docSnap.data();
+                    const docId = docSnap.id;
+                    return `
+                        <div class="portfolio-item">
+                            <i class="${proj.icon || 'fas fa-check-circle'}"></i>
+                            <h4>${proj.title || proj.name || 'مشروع مكتمل'}</h4>
+                            <button onclick="window.deleteProjectItem('${docId}')" class="btn-danger"><i class="fas fa-trash-alt"></i> حذف</button>
+                        </div>
+                    `;
+                }).join('');
+                htmlContent += dynamicDbProjects;
             }
-            projectsContainer.innerHTML = snapshot.docs.map(doc => {
-                const proj = doc.data();
-                return `
-                    <div class="portfolio-item">
-                        <i class="${proj.icon || 'fas fa-check-circle'}"></i>
-                        <h4>${proj.title || proj.name || 'مشروع مكتمل'}</h4>
-                    </div>
-                `;
-            }).join('');
+
+            projectsContainer.innerHTML = htmlContent;
         });
     </script>
 </body>
